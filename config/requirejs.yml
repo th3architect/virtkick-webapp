@@ -12,5 +12,9 @@ shim:
     deps: ['novnc/rfb']
     exports: 'RFB'
 modules:
-  - name: 'application'
+  - name: 'views/machine/new'
+  - name: 'views/machine/index'
+  - name: 'views/machine/show'
+  - name: 'views/guests/index'
 wrapShim: true
+onBuildRead: "function (moduleName, path, contents) { return require('ng-annotate')(contents, {add: true}).src;}"

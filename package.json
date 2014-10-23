@@ -1,0 +1,22 @@
+{
+  "name": "virtkick-webapp",
+  "version": "1.0.0",
+  "description": "VirtKick web app node.js part",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/virtkick/virtkick-webapp.git"
+  },
+  "author": "",
+  "license": "AGPL",
+  "bugs": {
+    "url": "https://github.com/virtkick/virtkick-webapp/issues"
+  },
+  "homepage": "https://github.com/virtkick/virtkick-webapp",
+  "dependencies": {
+    "http-master": "1.0.1"
+  }
+}

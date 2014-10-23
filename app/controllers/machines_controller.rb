@@ -4,6 +4,9 @@ class MachinesController < ApplicationController
   include FindMachine
   find_machine_before_action :id, except: [:index, :new, :create]
 
+  respond_to :html
+  respond_to :json, only: [:create, :show, :vnc]
+
 
   def index
     @machines = current_user.machines
@@ -14,11 +17,19 @@ class MachinesController < ApplicationController
     @machine ||= NewMachine.new
     @plans ||= Defaults::MachinePlan.all
     @isos ||= Plans::IsoDistro.all
+    respond_with @machine
   end
 
   def create
+
     machine_params = NewMachine.check_params params
     @machine = current_user.new_machines.build machine_params
+
+    if params[:validate]
+      @machine.valid?
+      new
+      return
+    end
 
     if @machine.save
       MachineCreateJob.perform_later @machine.id
@@ -27,7 +38,6 @@ class MachinesController < ApplicationController
     end
 
     new
-    render 'new'
   end
 
   def show
@@ -54,5 +64,13 @@ class MachinesController < ApplicationController
 
   def state
     render json: @machine.status.attributes
+  end
+
+  def vnc
+    if @machine.vnc_port
+      render json: {port: @machine.vnc_port, host: @machine.vnc_listen_ip}
+    else
+      render json: {}, status: :precondition_failed
+    end
   end
 end

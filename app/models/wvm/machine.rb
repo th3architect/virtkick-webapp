@@ -17,6 +17,8 @@ class Wvm::Machine < Wvm::Base
       memory: response[:cur_memory],
       processors: response[:vcpu],
       status: determine_status(response),
+      vnc_port: response[:vnc_port],
+      vnc_listen_ip: hypervisor[:vnc_listen_ip],
       vnc_password: response[:vnc_password],
       disks: Wvm::Disk.array_of(response.disks)
     }

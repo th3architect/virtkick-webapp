@@ -9,7 +9,6 @@ html
     meta name='viewport' content='width=device-width'
     link rel='shortcut icon' href='/favicon.ico'
     = stylesheet_link_tag 'application', media: 'all'
-    = requirejs_include_tag 'application'
     = csrf_meta_tags
   body
     .mobile-newsletter.hidden-md.hidden-lg
@@ -77,7 +76,6 @@ html
           = yield
 
 
-    = javascript_include_tag 'application'
     = render partial: 'layouts/doorbell'
     = yield :scripts
 

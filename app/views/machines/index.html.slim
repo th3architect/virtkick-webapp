@@ -1,6 +1,9 @@
 - @header = 'Machines'
 - @icon = 'monitor'
 
+- content_for :scripts do
+  = requirejs_include_tag 'views/machine/index'
+
 - content_for :action do
   - if user_signed_in?
     = link_to 'Create a new machine', new_machine_path, class: 'btn btn-primary btn-block'
@@ -61,24 +64,3 @@
   - else
     p You don't have a machine yet. Kick things off and #{link_to 'create one!', new_machine_path}
 
-- content_for :scripts do
-  javascript:
-    require(['jquery', '!domReady'], function($) {
-      var $creating = $('.creating');
-      if ($creating.length > 0) {
-        var url = $creating.attr('data-url');
-        setInterval(function() {
-          $.ajax(url).success(function(data) {
-            if (!data.finished) {
-              return;
-            }
-
-            if (data.error_message) {
-              window.location.reload(false);
-            } else {
-              window.location.pathname = '/machines/' + data.given_meta_machine_id;
-            }
-          });
-        }, 500);
-      }
-    });

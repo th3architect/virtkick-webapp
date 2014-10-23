@@ -1,12 +1,30 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  ## Uncomment to debug requests
+  # before_action do
+  #   puts request.headers.inspect
+  # end
+
   before_action do
     next unless user_signed_in?
 
     if current_user.email.start_with? 'guest' and current_user.created_at <= 30.minutes.ago
       sign_out
       redirect_to '/'
+    end
+  end
+
+  rescue_from Exception do |e|
+    if request.format == 'application/json'
+      if Rails.configuration.consider_all_requests_local
+        render json: {exception: e.class.name, message: e.message}, status: 500
+      else
+        render json: {exception: true}, status: 500
+      end
+      Bugsnag.notify_or_ignore e
+    else
+      raise e
     end
   end
 

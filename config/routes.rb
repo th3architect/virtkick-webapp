@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       post 'mount_iso'
 
       get 'state'
+      get 'vnc'
     end
 
     resources :disks do

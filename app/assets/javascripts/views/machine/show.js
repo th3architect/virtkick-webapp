@@ -1,5 +1,19 @@
 define(function(require) {
+
   var $ = require('jquery');
+  require('bootstrap');
+  require('!domReady');
+
+  var hash = window.location.hash.substring(1);
+  if (hash.length > 0) {
+    $('a.' + hash).click();
+  }
+
+
+  $('.nav-pills a').click(function() {
+    window.location.hash = $(this).attr('class');
+  });
+
 
   var handleProgress = function(progressId, onSuccess, onError) {
     var id = setInterval(function() {
@@ -89,8 +103,6 @@ define(function(require) {
 
     reloadButtonState();
 
-    var handleProgress = require('pages/handleProgress');
-
     var getCurrentState = function() {
       $.ajax(window.location.pathname + '/state').success(function(data) {
         $icon.attr('class', 'icon ' + data.icon);
@@ -174,4 +186,6 @@ define(function(require) {
       row.find('.name .message').text(error);
     });
   });
+
 });
+

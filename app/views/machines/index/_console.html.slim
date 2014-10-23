@@ -69,11 +69,11 @@
 
           var $canvas = $('#page-console').find('canvas');
           var host = window.location.hostname;
-          var port = 6080;
+          var port = window.location.port;
           var password = $canvas.attr('data-password');
           var uuid = $canvas.attr('data-uuid');
           document.cookie = 'token=1-' + uuid + '; path=/';
-          rfb.connect(host, port, password, '');
+          rfb.connect(host, port, password, window.location.pathname.substr(1) + "/vnc");
         };
 
         rfb = new RFB({
