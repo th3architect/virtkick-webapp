@@ -68,7 +68,7 @@ class MachinesController < ApplicationController
 
   def vnc
     if @machine.vnc_port
-      render json: {port: @machine.vnc_port, host: 'localhost'} # TODO: change after merging feature/configure-wvm branch
+      render json: {port: @machine.vnc_port, host: @machine.vnc_listen_ip}
     else
       render json: {}, status: :precondition_failed
     end

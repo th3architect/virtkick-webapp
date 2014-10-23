@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   rescue_from Exception do |e|
     if request.format == 'application/json'
       if Rails.configuration.consider_all_requests_local
-        render json: {exception: e.class, message: e.message}, status: 500
+        render json: {exception: e.class.name, message: e.message}, status: 500
       else
         render json: {exception: true}, status: 500
       end
