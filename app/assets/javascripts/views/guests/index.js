@@ -1,4 +1,4 @@
-define('application', function(require) {
+define(function(require) {
   var $ = require('jquery');
   require('jquery_ujs');
   require('jquery.ajaxchimp')

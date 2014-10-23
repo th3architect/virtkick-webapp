@@ -21,8 +21,15 @@ class MachinesController < ApplicationController
   end
 
   def create
+
     machine_params = NewMachine.check_params params
     @machine = current_user.new_machines.build machine_params
+
+    if params[:validate]
+      @machine.valid?
+      new
+      return
+    end
 
     if @machine.save
       MachineCreateJob.perform_later @machine.id

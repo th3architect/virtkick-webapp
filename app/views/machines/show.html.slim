@@ -4,6 +4,9 @@
     = @machine.hostname
 
 
+- content_for :scripts do
+  = requirejs_include_tag 'views/machine/show'
+
 #page-machine
   - tabs = %w(power console storage settings)
   ul.nav.nav-pills.nav-justified
@@ -15,18 +18,3 @@
     - for page in tabs
       .tab-pane id=page class="#{'active' if page == 'power'}"
         = render partial: "machines/index/#{page}"
-
-- content_for :scripts do
-  javascript:
-    require(['jquery', 'pages/machine'], function($) {
-      $(function() {
-        var hash = window.location.hash.substring(1);
-        if (hash.length > 0) {
-          $('a.' + hash).click();
-        }
-
-        $('.nav-pills a').click(function() {
-          window.location.hash = $(this).attr('class');
-        });
-      });
-    });

@@ -4,6 +4,11 @@
 @import 'bootstrap';
 @import 'fonts';
 
+// utility to hide unloaded angular content
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+display: none !important;
+}
+
 .bright-violet {
   color: $bright-violet-color;
 }
@@ -343,3 +348,7 @@ h3 {
 @import 'pages/*';
 @import 'vendor/*.css.scss';
 // ignore .less for now
+
+// .ng-invalid {
+//   @extend .has-error;
+// }
