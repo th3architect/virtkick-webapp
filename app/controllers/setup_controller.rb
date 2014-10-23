@@ -9,5 +9,7 @@ class SetupController < ApplicationController
 
   def perform
     Wvm::Setup.setup
+
+    redirect_to guests_path
   end
 end

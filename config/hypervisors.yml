@@ -8,16 +8,14 @@ default: &default
       id: virtkick-nat
       type: nat
       address: 192.168.123.0/24
-      dhcp:
-        from: 192.168.123.2
-        to: 192.168.123.254
+      dhcp: true
     storages:
       - name: HDD
         id: virtkick-hdd
-        path: /virtkick/hdd
+        path: <%= ENV['HDD_DIR'] || Rails.root.join('tmp', 'hdd') %>
     iso:
       id: virtkick-iso
-      path: /virtkick/iso
+      path: <%= ENV['ISO_DIR'] || Rails.root.join('tmp', 'iso') %>
 
 
 test: *default
