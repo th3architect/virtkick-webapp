@@ -159,7 +159,6 @@ define(function(require) {
   });
 
   $('a.delete-disk').on('ajax:success', function(e, data) {
-    console.log(e.currentTarget);
     var link = $(e.currentTarget);
     var row = link.closest('tr');
     row.find('.name .fa-spinner').removeClass('hidden');
