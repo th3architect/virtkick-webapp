@@ -1,6 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  ## Uncomment to debug requests
+  # before_action do
+  #   puts request.headers.inspect
+  # end
+
   before_action do
     next unless user_signed_in?
 
