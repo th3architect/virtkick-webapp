@@ -5,7 +5,7 @@ class MachinesController < ApplicationController
   find_machine_before_action :id, except: [:index, :new, :create]
 
   respond_to :html
-  respond_to :json, only: [:create, :show]
+  respond_to :json, only: [:create, :show, :vnc]
 
 
   def index
@@ -64,5 +64,13 @@ class MachinesController < ApplicationController
 
   def state
     render json: @machine.status.attributes
+  end
+
+  def vnc
+    if @machine.vnc_port
+      render json: {port: @machine.vnc_port, host: 'localhost'} # TODO: change after merging feature/configure-wvm branch
+    else
+      render json: {}, status: :precondition_failed
+    end
   end
 end

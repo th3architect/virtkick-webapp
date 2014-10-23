@@ -10,6 +10,19 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  rescue_from Exception do |e|
+    if request.format == 'application/json'
+      if Rails.configuration.consider_all_requests_local
+        render json: {exception: e.class, message: e.message}, status: 500
+      else
+        render json: {exception: true}, status: 500
+      end
+      Bugsnag.notify_or_ignore e
+    else
+      raise e
+    end
+  end
+
   before_bugsnag_notify :add_user_info_to_bugsnag
 
   private
