@@ -32,7 +32,7 @@
         | Choose a plan
       .text-center
         .plans.btn-group
-          = f.text_field :plan_id, :'ng-model' => 'data.planId', required: true, :'class' => 'hide'
+          = f.text_field :plan_id, ng_model: 'data.planId', required: true, class: 'hide'
           - for plan in @plans
             - active = @machine.plan == plan ? 'active' : ''
             label class='btn btn-info plan #{active} fixed-width' ng-model='data.planId' btn-radio=plan.id
@@ -69,7 +69,7 @@
 
           - active = @machine.iso_distro ? 'active' : ''
           div.ng-cloak.image-type-group.isos.btn-group class="#{active}" ng-if='data.imageType == "isos"'
-            = f.text_field :iso_distro_id, :'ng-model' => 'data.isoId', :'ng-required'=> 'true', :'class' => 'hide'
+            = f.text_field :iso_distro_id, ng_model: 'data.isoId', ng_required: 'true', class: 'hide'
             - for iso in @isos
               - active = @machine.iso_distro == iso ? 'active' : ''
               label class="btn btn-info distro #{active}" ng-model='data.isoId' btn-radio="'#{iso.id}'"
