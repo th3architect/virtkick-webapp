@@ -4,6 +4,8 @@ define(function(require) {
   require('bootstrap');
   require('!domReady');
 
+  require('./_console');
+
   var hash = window.location.hash.substring(1);
   if (hash.length > 0) {
     $('a.' + hash).click();

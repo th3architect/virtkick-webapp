@@ -360,7 +360,6 @@ angular.module('ui.bootstrap.buttons', [])
 
         if (!isActive || angular.isDefined(attrs.uncheckable)) {
           scope.$apply(function () {
-            console.log(attrs.btnRadio);
             ngModelCtrl.$setViewValue(isActive ? null : scope.$eval(attrs.btnRadio));
             ngModelCtrl.$render();
           });

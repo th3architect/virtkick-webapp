@@ -2,7 +2,7 @@
 - @icon = 'monitor'
 
 - content_for :scripts do
-  = requirejs_include_tag 'views/machine/new'
+  = requirejs_include_tag 'pages/machineNew'
 
 #page-new-machine ng-app=1 ng-controller='NewMachineCtrl'
   = form_for @machine, as: :machine, url: machines_path(@machine), method: :post, :html => {:name => "form"}do |f|

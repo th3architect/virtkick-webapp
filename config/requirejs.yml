@@ -2,25 +2,30 @@ shim:
   jquery:
     exports: 'jQuery'
   jquery_ujs: ['jquery']
-  'bootstrap': ['jquery', 'jquery_ujs']
+  bootstrap: ['jquery', 'jquery_ujs']
   'twitter/bootstrap/rails/confirm':
     deps: ['bootstrap', 'jquery_ujs']
-  'novnc/rfb':
-    deps: ["novnc/util","novnc/webutil", "novnc/base64", "novnc/websock", "novnc/des",
-        "novnc/keysymdef", "novnc/keyboard", "novnc/input", "novnc/display", "novnc/jsunzip"]
-  'novnc':
-    deps: ['novnc/rfb']
+  novnc/rfb:
+    deps: ["novnc/util","novnc/webutil", "novnc/base64", "novnc/websock", "novnc/des", "novnc/keysymdef", "novnc/keyboard", "novnc/input", "novnc/display", "novnc/jsunzip"]
     exports: 'RFB'
 modules:
   - name: 'appcommon'
     include: ['jquery', 'jquery_ujs', 'angular']
-  - name: 'views/machine/new'
+  - name: 'pages/machineIndex'
+    include: ['views/machine/index']
     exclude: ['appcommon']
-  - name: 'views/machine/index'
+  - name: 'pages/machineShow'
+    include: ['views/machine/show']
     exclude: ['appcommon']
-  - name: 'views/machine/show'
+  - name: 'pages/machineNew'
+    include: ['views/machine/new']
     exclude: ['appcommon']
-  - name: 'views/guests/index'
+  - name: 'pages/guestsIndex'
+    include: ['views/guests/index']
     exclude: ['appcommon']
+#uncomment to debug builds
+preserveLicenseComments: false
+generateSourceMaps: true
+optimize: uglify2
 wrapShim: true
 onBuildRead: "function (moduleName, path, contents) { return require('ng-annotate')(contents, {add: true}).src;}"

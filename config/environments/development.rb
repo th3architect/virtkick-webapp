@@ -19,9 +19,9 @@ Rails.application.configure do
     config.active_job.queue_adapter = :inline
   end
   config.assets.digest = false
-  config.assets.compress = true
-  config.assets.js_compressor = NoCompression.new
-  config.assets.css_compressor = NoCompression.new
+  # config.assets.compress = true
+  # config.assets.js_compressor = NoCompression.new
+  # config.assets.css_compressor = NoCompression.new
   config.assets.debug = true
   config.assets.raise_runtime_errors = true
 end
