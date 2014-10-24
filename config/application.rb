@@ -23,9 +23,9 @@ module VirtkickWebapp
 
     config.serve_static_assets = true
 
-		config.assets.digest = true
+	config.assets.digest = true
     config.assets.enabled = true
-    # config.assets.js_compressor = :uglifier
+    config.assets.js_compressor = :uglifier
     config.assets.compile = true
     config.assets.version = '1.0'
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
