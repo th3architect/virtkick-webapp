@@ -3,12 +3,12 @@
 [![GPA](https://img.shields.io/codeclimate/github/virtkick/virtkick-webapp.svg?style=flat-square)](https://codeclimate.com/github/virtkick/virtkick-webapp)
 [![Build status](https://img.shields.io/travis/virtkick/virtkick-webapp.svg?style=flat-square)](https://travis-ci.org/virtkick/virtkick-webapp)
 [![Dependencies status](http://img.shields.io/gemnasium/virtkick/virtkick-webapp.svg?style=flat-square)](https://gemnasium.com/virtkick/virtkick-webapp)
-[![Gratipay](https://img.shields.io/gratipay/Nowaker.svg?style=flat-square)](https://gratipay.com/Nowaker/)
+[![Gratipay](https://img.shields.io/gratipay/virtkick.svg?style=flat-square)](https://gratipay.com/virtkick/)
 
 VirtKick is a simple, open source orchestrator.
 Managing virtual machines or Docker containers has never been easier.
 
-That's the VirtKick web application. It provides a user interface and delegates virtualization-related tasks to the backend.
+That's the VirtKick Web Application. It provides a user interface and delegates virtualization-related tasks to the backend.
 
 ## Issues
 
