@@ -6,7 +6,7 @@ define(function(require) {
   require('angular-messages'); // for ngMessages
   require('ui-bootstrap');
 
-  var app = angular.module('app', ['ui.botstrap', 'ngMessages']);
+  var app = angular.module('app', ['ui.bootstrap', 'ngMessages']);
 
   require('csrfSetup')(app);
 
