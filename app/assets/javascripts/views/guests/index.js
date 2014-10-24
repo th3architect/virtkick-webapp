@@ -1,12 +1,11 @@
 define(function(require) {
+  require('appcommon');
   var $ = require('jquery');
   require('jquery_ujs');
   require('jquery.ajaxchimp')
   require('bootstrap');
   require('twitter/bootstrap/rails/confirm');
   require('!domReady');
-
-  var angular = require('angular');
 
   var ga = require('snippets/analytics');
 
@@ -28,4 +27,3 @@ define(function(require) {
   });
 });
 // defer bootstrap loading
-window.name = "NG_DEFER_BOOTSTRAP!";

@@ -1,5 +1,5 @@
 define(function(require) {
-
+  require('appcommon');
   var $ = require('jquery');
   require('bootstrap');
   require('!domReady');

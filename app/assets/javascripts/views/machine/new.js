@@ -1,12 +1,12 @@
-window.name = "NG_DEFER_BOOTSTRAP!";
 define(function(require) {
+  require('appcommon');
   var $ = require('jquery');
   
   var angular = require('angular');
   require('angular-messages'); // for ngMessages
   require('ui-bootstrap');
 
-  var app = angular.module('app', ['ui.bootstrap', 'ngMessages']);
+  var app = angular.module('app', ['ui.botstrap', 'ngMessages']);
 
   require('csrfSetup')(app);
 

@@ -12,9 +12,15 @@ shim:
     deps: ['novnc/rfb']
     exports: 'RFB'
 modules:
+  - name: 'appcommon'
+    include: ['jquery', 'jquery_ujs', 'angular']
   - name: 'views/machine/new'
+    exclude: ['appcommon']
   - name: 'views/machine/index'
+    exclude: ['appcommon']
   - name: 'views/machine/show'
+    exclude: ['appcommon']
   - name: 'views/guests/index'
+    exclude: ['appcommon']
 wrapShim: true
 onBuildRead: "function (moduleName, path, contents) { return require('ng-annotate')(contents, {add: true}).src;}"

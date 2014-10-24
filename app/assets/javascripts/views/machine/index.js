@@ -1,4 +1,5 @@
 define(function(require) {
+  require('appcommon');
 
   var $ = require('jquery');
   require('!domReady');
@@ -22,5 +23,3 @@ define(function(require) {
   }
 
 });
-
-window.name = "NG_DEFER_BOOTSTRAP!";
