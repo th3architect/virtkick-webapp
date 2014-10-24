@@ -6,6 +6,7 @@ before_script:
 - bundle exec rake db:migrate
 script:
 - bundle exec rake spec
+- SECRET_KEY_BASE=x DEVISE_SECRET_KEY=x bundle exec rake assets:precompile
 notifications:
   email: false
   webhooks: http://n.tkte.ch/h/3277/NNXLHHi3FclU9dLZpLNHByMf
