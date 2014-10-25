@@ -13,10 +13,6 @@ class Plans::IsoImage < ActiveYaml::Base
   belongs_to :iso_distro, class_name: 'Plans::IsoDistro'
 
 
-  def path
-    Infra::DiskType.find(pool_name).path + '/' + file
-  end
-
   def self.by_file file
     self.all.select { |image| image.file == file }
   end

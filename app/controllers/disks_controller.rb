@@ -12,7 +12,7 @@ class DisksController < ApplicationController
   end
 
   def create
-    disk_params = params.require(:disk).permit(:size_plan, :type)
+    disk_params = params.require(:disk).permit(:size_plan, :type) # TODO: validate plan
     render_progress DiskCreateJob.perform_later current_user, @meta_machine.id, disk_params
   end
 

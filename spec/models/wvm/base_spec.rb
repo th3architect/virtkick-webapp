@@ -1,3 +1,5 @@
+require 'net/http'
+
 describe Wvm::Base do
   [Errno::EPIPE, Errno::ECONNRESET].each do |error|
     it "retries call on #{error}" do
@@ -15,7 +17,10 @@ describe Wvm::Base do
     thrown = false
     allow(Wvm::Base).to receive(:post) do
       if thrown
-        {'errors' => [], 'response' => {key: :val}}
+        request = OpenStruct.new({options: {}})
+        body = OpenStruct.new({errors: [], response: {key: :val}})
+        response = OpenStruct.new({ok?: true})
+        HTTParty::Response.new request, response, lambda { body }
       else
         thrown = true
         raise error

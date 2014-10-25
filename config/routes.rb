@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
-  root 'guests#index'
+  root 'setup#index'
 
   devise_for :users, skip: [:sessions]
 
   resources :guests, only: [:index, :create]
+
+  get '/setup', to: 'setup#index', as: 'setup'
+  get '/setup/recheck', to: 'setup#recheck', as: 'recheck_setup'
+  post '/setup/perform', to: 'setup#perform', as: 'perform_setup'
 
   resources :machines do
     member do

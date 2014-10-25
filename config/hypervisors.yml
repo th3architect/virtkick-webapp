@@ -1,0 +1,23 @@
+default: &default
+  - id: 1
+    name: virtkick-localhost
+    host: localhost
+    login: virtkick
+    vnc_listen_ip: 127.0.0.1
+    network:
+      id: virtkick-nat
+      type: nat
+      address: 192.168.123.0/24
+      dhcp: true
+    storages:
+      - name: HDD
+        id: virtkick-hdd
+        path: <%= ENV['HDD_DIR'] || '/home/virtkick/hdd' %>
+    iso:
+      id: virtkick-iso
+      path: <%= ENV['ISO_DIR'] || '/home/virtkick/iso' %>
+
+
+test: *default
+development: *default
+production: *default
