@@ -51,7 +51,7 @@ class Wvm::Setup < Wvm::Base
 
   def self.create_network id
     network = hypervisor[:network]
-    call :post, "/#{id}/networks/", create: '',
+    call :post, "/#{id}/networks", create: '',
         name: network[:id],
         subnet: network[:address],
         dhcp: network[:dhcp],
