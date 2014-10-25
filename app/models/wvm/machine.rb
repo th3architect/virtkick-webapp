@@ -49,7 +49,7 @@ class Wvm::Machine < Wvm::Base
 
     machine.create_disk Infra::Disk.new \
         size: new_machine.plan.storage,
-        type: new_machine.plan.storage_type
+        pool: new_machine.plan.storage_type
 
     machine
   end

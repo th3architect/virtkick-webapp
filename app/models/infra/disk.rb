@@ -4,7 +4,8 @@ class Infra::Disk < Infra::Base
   attr_accessor :path, :name, :format
 
   attr_accessor :size, :used
-  attr_accessor :device, :type
+  attr_accessor :device
+  attr_accessor :type, :pool
 
   attr_reader :size_plan # create only
   define_attribute_methods :size_plan

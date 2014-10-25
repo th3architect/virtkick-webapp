@@ -29,7 +29,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'requirejs-rails', git: 'https://github.com/RushPL/requirejs-rails.git', branch: 'onBuildRead'
 
 group :development, :test do
-  gem 'byebug'
   gem 'rspec-rails'
   gem 'spring'
   gem 'web-console', '~> 2.0.0.beta2'
