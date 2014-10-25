@@ -1,5 +1,6 @@
 require 'active_support/hash_with_indifferent_access'
 
+# TODO: autoreload YAML files in development
 class YamlConfig
   def initialize config_name
     config_file = File.join Rails.root, 'config', "#{config_name}.yml"

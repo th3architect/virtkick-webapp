@@ -8,7 +8,7 @@ class Infra::Machine < Infra::Base
   attr_accessor :vnc_password, :vnc_port, :vnc_listen_ip
   attr_accessor :disks
   attr_accessor :networks
-  attr_accessor :iso_distro_id, :iso_image_id
+  attr_accessor :iso_dir, :iso_distro_id, :iso_image_id
 
 
   def self.all

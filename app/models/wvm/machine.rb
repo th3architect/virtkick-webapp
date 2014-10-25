@@ -20,7 +20,8 @@ class Wvm::Machine < Wvm::Base
       vnc_port: response[:vnc_port],
       vnc_listen_ip: hypervisor[:vnc_listen_ip],
       vnc_password: response[:vnc_password],
-      disks: Wvm::Disk.array_of(response.disks)
+      disks: Wvm::Disk.array_of(response.disks),
+      iso_dir: hypervisor[:iso][:path]
     }
 
     if response.media and not response.media.empty?
@@ -146,7 +147,8 @@ class Wvm::Machine < Wvm::Base
         iso_image_id: new_machine.iso_distro.iso_images.first.id,
         networks: networks,
         vnc_listen_ip: hypervisor[:vnc_listen_ip],
-        vnc_password: SecureRandom.urlsafe_base64(32)
+        vnc_password: SecureRandom.urlsafe_base64(32),
+        iso_dir: hypervisor[:iso][:path]
   end
 
   def self.setup_networks uuid

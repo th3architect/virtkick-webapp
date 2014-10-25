@@ -12,10 +12,10 @@ default: &default
     storages:
       - name: HDD
         id: virtkick-hdd
-        path: <%= ENV['HDD_DIR'] || Rails.root.join('tmp', 'hdd') %>
+        path: <%= ENV['HDD_DIR'] || '/home/virtkick/hdd' %>
     iso:
       id: virtkick-iso
-      path: <%= ENV['ISO_DIR'] || Rails.root.join('tmp', 'iso') %>
+      path: <%= ENV['ISO_DIR'] || '/home/virtkick/iso' %>
 
 
 test: *default
