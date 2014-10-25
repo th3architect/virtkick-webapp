@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'guests#index'
+  root 'setup#index'
 
   devise_for :users, skip: [:sessions]
 

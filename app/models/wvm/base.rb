@@ -18,6 +18,10 @@ class Wvm::Base
 
     response = try_twice { send method, url, params }
 
+    unless response.response.ok?
+      raise Errors, ['Backend responded with 500 Internal Server Error']
+    end
+
     errors = response['errors']
     if errors and errors.size > 0
       raise Errors, errors

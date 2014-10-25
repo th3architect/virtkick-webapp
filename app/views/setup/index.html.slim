@@ -17,6 +17,10 @@
           br
           | Stay tuned for support for remote hypervisors & auto-configuration!
 
+    - if @error
+      div.alert.alert-danger
+        = @error
+
     .text-center
       .row
         .md-col-12
