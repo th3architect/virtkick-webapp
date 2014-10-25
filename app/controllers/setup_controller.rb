@@ -20,6 +20,12 @@ class SetupController < ApplicationController
     redirect
   end
 
+  def recheck
+    @@ready = false
+    index
+    render action: :index
+  end
+
   private
   def redirect
     @@ready = true
