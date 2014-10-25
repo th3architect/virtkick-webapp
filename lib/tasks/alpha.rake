@@ -11,4 +11,19 @@ namespace :alpha do
       end
     end
   end
+
+  desc 'Delete all virtual machines from libvirt (dangerous!)'
+  task disaster_cleanup: :environment do
+    print "All VMs will be deleted. You've got 5 seconds to abort."
+    (1..5).each do
+      sleep 1
+      print '.'
+    end
+
+    response = Wvm::Base.call :get, '/1/instances'
+    response.instances.each do |machine|
+      puts "Deleting #{machine.name}"
+      Wvm::Machine.delete OpenStruct.new({hostname: machine.name})
+    end
+  end
 end
