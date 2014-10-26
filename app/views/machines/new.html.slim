@@ -19,11 +19,13 @@
       .ng-cloak.help-block
         ng-messages for="form['machine[hostname]'].$error" ng-if="form.$dirty"
           ng-message when="required"
-            | This can't be blank
+            | This can't be blank.
           ng-message when="already exists"
-            | Machine with such hostname already exists
+            | Machine with such hostname already exists.
           ng-message when="has already been taken"
-            | Hostname already taken
+            | Hostname already taken.
+          ng-message when="any"
+            | Hostname is invalid.
         = errors_for @machine, :hostname
 
     .form-group

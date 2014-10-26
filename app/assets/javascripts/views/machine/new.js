@@ -34,7 +34,7 @@ define(function(require) {
                 delete ctrl.errors[error];
               });
               if(arg.errors.hostname) {
-
+                ctrl.$setValidity('any', false);
                 arg.errors.hostname.forEach(function(error) {
                   ctrl.errors[error] = true;
                   ctrl.$setValidity(error, false);
@@ -42,7 +42,10 @@ define(function(require) {
 
 
                 return reject(arg.errors.hostname);
+              } else {
+                ctrl.$setValidity('any', true);
               }
+
               resolve();
             });
           });
