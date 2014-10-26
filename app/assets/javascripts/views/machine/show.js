@@ -3,7 +3,7 @@ define(function(require) {
   var $ = require('jquery');
   require('bootstrap');
   require('!domReady');
-
+  require('twitter/bootstrap/rails/confirm');
   require('./_console');
 
   var hash = window.location.hash.substring(1);
