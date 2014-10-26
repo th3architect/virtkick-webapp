@@ -34,8 +34,6 @@ module VirtkickWebapp
 
     config.active_job.queue_adapter = :delayed_job
 
-    config.x.api_url = 'http://0.0.0.0:8000/1'
-
     config.x.demo = false
     if ENV['DEMO']
       timeout = ENV['DEMO_TIMEOUT'] || 30
