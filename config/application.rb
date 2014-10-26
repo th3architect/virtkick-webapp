@@ -35,6 +35,7 @@ module VirtkickWebapp
     config.active_job.queue_adapter = :delayed_job
 
     config.x.demo = false
+    config.x.demo_timeout = false
     if ENV['DEMO']
       timeout = ENV['DEMO_TIMEOUT'] || 30
       config.x.demo = true

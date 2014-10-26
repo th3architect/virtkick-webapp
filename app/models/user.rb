@@ -10,7 +10,8 @@ class User < ActiveRecord::Base
   }
 
   scope :to_delete, -> {
-    guest.where('created_at < ?', 45.minutes.ago)
+    timeout = Rails.configuration.x.demo_timeout || raise('DEMO_TIMEOUT not set')
+    guest.where('created_at < ?', timeout.minutes.ago)
   }
 
 
