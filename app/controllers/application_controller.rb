@@ -7,11 +7,10 @@ class ApplicationController < ActionController::Base
   # end
 
   before_action do
-    next unless user_signed_in?
-
-    if current_user.email.start_with? 'guest' and current_user.created_at <= 30.minutes.ago
-      sign_out
-      redirect_to '/'
+    @demo = Rails.configuration.x.demo
+    if @demo
+      @demo_timeout = Rails.configuration.x.demo_timeout
+      limit_demo_sessions
     end
   end
 
@@ -42,5 +41,15 @@ class ApplicationController < ActionController::Base
 
   def render_progress progress_id
     render json: {progress_id: progress_id}
+  end
+
+  def limit_demo_sessions
+    return unless user_signed_in?
+
+    if current_user.guest? and current_user.created_at <= @demo_timeout.minutes.ago
+      sign_out
+      flash[:alert] = "Alpha sessions are limited to #{@demo_timeout} minutes.\n Start again if you wish! :-)"
+      redirect_to '/'
+    end
   end
 end

@@ -10,7 +10,12 @@ class GuestsController < ApplicationController
   end
 
   def create
-    sign_in User.create_guest!
+    if @demo
+      sign_in User.create_guest!
+    else
+      sign_in User.create_single_user!
+    end
+
     redirect_to machines_path
   end
 end

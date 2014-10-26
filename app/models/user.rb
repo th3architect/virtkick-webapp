@@ -16,13 +16,28 @@ class User < ActiveRecord::Base
 
   def self.create_guest!
     email = "guest_#{SecureRandom.uuid}@alpha.virtkick.io"
-    guest = User.new email: email, guest: true
-    guest.save validate: false
-    guest
+    create_user! email, true
+  end
+
+  def self.create_single_user!
+    email = 'user@alpha.virtkick.io'
+    user = User.where(email: email).first
+    return user if user
+    create_user! email, false
+  end
+
+  def self.create_user! email, guest
+    user = User.new email: email, guest: guest
+    user.save validate: false
+    user
   end
 
   def machines
     Infra::Elements.new self.meta_machines.map &:machine
+  end
+
+  def remember_me
+    true
   end
 
   def to_s

@@ -1,6 +1,5 @@
-content_for :scripts
+- content_for :scripts
   = requirejs_include_tag 'pages/guestsIndex'
-
 
 #page-home
   .container
@@ -12,10 +11,15 @@ content_for :scripts
             span.virt virt
             span.kick kick
           .beta
+          - if @demo
             | Hosted Alpha
+          - else
+            | Standalone Alpha 0.3
 
       .md-col-12.text-center
         p VirtKick is a simple, open source orchestrator.
+
+    = render partial: '/flash'
 
 
     .text-center
@@ -23,7 +27,8 @@ content_for :scripts
         .md-col-12
           = button_to guests_path, method: :post, class: 'btn btn-primary btn-lg start-demo', rel: 'nofollow noindex' do
             .title Test it out now!
-            .disclaimer Alpha sessions are limited to 30 minutes.
+            - if @demo
+              .disclaimer Alpha sessions are limited to #{@demo_timeout} minutes.
       .row
         .md-col-12
           p

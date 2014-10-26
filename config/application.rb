@@ -23,7 +23,7 @@ module VirtkickWebapp
 
     config.serve_static_assets = true
 
-	config.assets.digest = true
+    config.assets.digest = true
     config.assets.enabled = true
 
     config.assets.compile = true
@@ -36,5 +36,11 @@ module VirtkickWebapp
 
     config.x.api_url = 'http://0.0.0.0:8000/1'
 
+    config.x.demo = false
+    if ENV['DEMO']
+      timeout = ENV['DEMO_TIMEOUT'] || 30
+      config.x.demo = true
+      config.x.demo_timeout = timeout.to_i
+    end
   end
 end

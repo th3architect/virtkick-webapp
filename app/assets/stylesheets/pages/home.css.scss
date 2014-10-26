@@ -32,6 +32,16 @@
     }
   }
 
+  .alert {
+    width: 500px;
+    margin: 0 auto;
+    text-align: center;
+
+    button {
+      display: none;
+    }
+  }
+
   .start-demo {
     width: 50%;
     min-width: 350px;

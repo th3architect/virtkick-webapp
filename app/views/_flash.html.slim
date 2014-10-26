@@ -6,7 +6,7 @@
       button.close data-dismiss="alert" ×
       - if message.is_a? Array
         - for msg in message
-          = msg
+          = simple_format msg
           br
       - else
-        = message
+        = simple_format message
