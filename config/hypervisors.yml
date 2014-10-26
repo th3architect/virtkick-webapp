@@ -3,7 +3,7 @@ default: &default
     name: virtkick-localhost
     host: localhost
     login: virtkick
-    vnc_listen_ip: 127.0.0.1
+    vnc_listen_ip: <%= ENV['VNC_FORCE_IP'] || '127.0.0.1' %>
     network:
       id: virtkick-nat
       type: nat
