@@ -5,7 +5,7 @@
   short_name: 14.04.1
   long_name: Ubuntu 14.04.1 LTS
   mirrors: 
-   - http://releases.ubuntu.com/14.04/ubuntu-14.04-server-amd64.iso
+   - http://releases.ubuntu.com/14.04/ubuntu-14.04.1-server-amd64.iso
 - id: 11
   iso_distro_id: 10
   file: ubuntu-13.10-server-amd64.iso
