@@ -5,48 +5,90 @@ class Wvm::Setup < Wvm::Base
   end
 
   def self.setup
-    id = create_connection
-    create_network id
-    all_storages.each do |storage|
-      create_storage id, storage[:id], storage[:path]
+    handle_exceptions do
+      id = create_connection_if_needed
+      create_network_if_needed id
+      all_storages.each do |storage|
+        create_storage_if_needed id, storage
+      end
     end
 
     # TODO: save response.id for future use
   end
 
   def self.check
-    id = find_connection
-    find_network id
-    all_storages.each do |storage|
-      find_storage id, storage[:id]
+    handle_exceptions do
+      id = find_connection
+      find_network id
+      all_storages.each do |storage|
+        find_storage id, storage[:id]
+      end
     end
   end
 
   private
+  def self.handle_exceptions
+    yield
+  rescue Timeout::Error
+    raise Error, \
+        'Could not connect to localhost hypervisor. Is OpenSSH server running? Is libvirtd running? ' +
+        'Can "virtkick" user execute virsh?'
+  end
+
+  # Connection
+
+  def self.create_connection_if_needed
+    id = begin
+      find_connection
+    rescue Exception
+      create_connection
+    end
+  end
+
   def self.find_connection
-    response = call :get, '/servers'
+    response = Timeout.timeout 1.second do
+      call :get, '/servers'
+    end
+
     host_info = response.hosts_info.find do |host_info|
       host_info.hostname == hypervisor[:host]
     end
 
-    raise Error, 'hypervisor not configured' unless host_info
-    host_info.id
+    if host_info.nil?
+      raise Error, 'Libvirt connection not configured.' unless host_info
+    elsif host_info.status != 1
+      raise Timeout::Error
+    else
+      host_info.id
+    end
   end
 
   def self.create_connection
-    response = call :post, '/servers', host_ssh_add: '',
-        name: hypervisor[:name],
-        hostname: hypervisor[:host],
-        login: hypervisor[:login]
+    Timeout.timeout 1.second do
+      response = call :post, '/servers', host_ssh_add: '',
+          name: hypervisor[:name],
+          hostname: hypervisor[:host],
+          login: hypervisor[:login]
 
-    response.id
+      response.id
+    end
+  end
+
+  # Network
+
+  def self.create_network_if_needed id
+    begin
+      find_network id
+    rescue Exception
+      create_network id
+    end
   end
 
   def self.find_network id
     call :get, "/#{id}/network/#{hypervisor[:network][:id]}"
-    # TODO: validate properties
+    # TODO: validate properties and state
   rescue Errors
-    raise Error, 'network not configured'
+    raise Error, 'Network not configured.'
   end
 
   def self.create_network id
@@ -57,10 +99,24 @@ class Wvm::Setup < Wvm::Base
         dhcp: network[:dhcp],
         forward: network[:type],
         bridge_name: ''
+  rescue Errors
+    raise Error, ''
+  end
+
+  # Storage
+
+  def self.create_storage_if_needed id, storage
+    begin
+      find_storage id, storage[:id]
+    rescue Exception
+      create_storage id, storage[:id], storage[:path]
+    end
   end
 
   def self.find_storage id, storage_id
     call :get, "/#{id}/storage/#{storage_id}"
+  rescue Errors
+    raise Error, 'Storage pools not configured'
   end
 
   def self.create_storage id, storage_id, storage_path

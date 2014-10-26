@@ -9,15 +9,21 @@ class SetupController < ApplicationController
     Wvm::Setup.check
     redirect
   rescue Wvm::Setup::Error => e
-    @error = e.message # TODO: remove
+    # expected
   end
 
   def perform
     Wvm::Setup.check
     render action: 'index'
-  rescue Wvm::Setup::Error => e
-    Wvm::Setup.setup
-    redirect
+  rescue Wvm::Setup::Error
+    begin
+      Wvm::Setup.setup
+      flash[:success] = 'All configured - start VirtKicking now! :-)'
+      redirect
+    rescue Wvm::Setup::Error => e
+      @error = e.message
+      render action: :index
+    end
   end
 
   def recheck

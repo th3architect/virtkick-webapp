@@ -7,7 +7,7 @@ class Wvm::Base
 
   include HTTParty
   base_uri 'http://0.0.0.0:8000/'
-
+  default_timeout 15
 
   def self.call method, url, **body
     params = {headers: {'Accept' => 'application/json'}}
