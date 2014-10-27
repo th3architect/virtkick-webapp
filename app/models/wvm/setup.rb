@@ -98,7 +98,8 @@ class Wvm::Setup < Wvm::Base
         subnet: network[:address],
         dhcp: network[:dhcp],
         forward: network[:type],
-        bridge_name: ''
+        bridge_name: '',
+        dns: network[:dns].join(',')
   rescue Errors
     raise Error, ''
   end

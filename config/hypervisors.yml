@@ -9,6 +9,9 @@ default: &default
       type: nat
       address: 192.168.123.0/24
       dhcp: true
+      dns:
+      - 8.8.8.8
+      - 8.8.4.4
     storages:
       - name: HDD
         id: virtkick-hdd
