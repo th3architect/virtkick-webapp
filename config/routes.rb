@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'setup#index'
+  get 'ping', to: 'ping#index', as: 'ping'
 
   devise_for :users, skip: [:sessions]
 
