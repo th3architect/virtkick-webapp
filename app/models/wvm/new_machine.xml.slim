@@ -6,7 +6,7 @@ domain type='kvm'
   currentMemory unit='bytes' = machine.memory.gigabytes.to_i
   vcpu placement='static' = machine.processors
   os
-    type arch='x86_64' machine='pc-i440fx-2.1' hvm
+    type arch='x86_64' hvm
     boot dev='hd'
     boot dev='cdrom'
     bootmenu enable='yes'
