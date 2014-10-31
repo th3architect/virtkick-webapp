@@ -1,7 +1,7 @@
 default: &default
   - id: 1
     name: virtkick-localhost
-    host: localhost
+    host: 'localhost:<%=ENV['SSH_PORT'] || 22 %>'
     login: virtkick
     vnc_listen_ip: <%= ENV['VNC_FORCE_IP'] || '127.0.0.1' %>
     network:
