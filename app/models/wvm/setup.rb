@@ -38,7 +38,7 @@ class Wvm::Setup < Wvm::Base
   # Connection
 
   def self.create_connection_if_needed
-    id = begin
+    begin
       find_connection
     rescue Exception
       create_connection
