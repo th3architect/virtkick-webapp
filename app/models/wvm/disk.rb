@@ -3,6 +3,10 @@ class Wvm::Disk < Wvm::Base
     disks ||= []
     array = disks.map do |disk|
       local_pool = Wvm::StoragePool.to_local disk.storage
+      local_pool_name = local_pool ? local_pool[:name] : nil
+      # TODO: This introduces a security hole. We should allow to get a disk from a custom storage pool, but we
+      # shouln't accept it when creating. Storage pool validation should occur on Controller level, not Infra level.
+
       Infra::Disk.new \
           used: disk.allocation,
           size: disk.capacity,
@@ -10,7 +14,7 @@ class Wvm::Disk < Wvm::Base
           path: disk.path,
           name: disk.image,
           format: disk.format,
-          type: local_pool[:name],
+          type: local_pool_name,
           pool: disk.storage
     end
 

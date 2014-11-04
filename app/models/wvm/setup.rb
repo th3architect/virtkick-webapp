@@ -26,6 +26,11 @@ class Wvm::Setup < Wvm::Base
     end
   end
 
+  def self.import_from_libvirt user
+    importer = LibvirtImporter.new
+    importer.import_all user
+  end
+
   private
   def self.handle_exceptions
     yield

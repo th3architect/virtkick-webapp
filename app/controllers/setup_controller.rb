@@ -8,8 +8,8 @@ class SetupController < ApplicationController
     return redirect if @@ready
     Wvm::Setup.check
     redirect
-  rescue Wvm::Setup::Error => e
-    # expected
+  rescue Wvm::Setup::Error
+    render action: :index
   end
 
   def perform
@@ -18,6 +18,11 @@ class SetupController < ApplicationController
   rescue Wvm::Setup::Error
     begin
       Wvm::Setup.setup
+      unless @demo
+        user = User.create_single_user!
+        sign_in user
+        Wvm::Setup.import_from_libvirt user
+      end
       flash[:success] = 'All configured - start VirtKicking now! :-)'
       redirect
     rescue Wvm::Setup::Error => e
@@ -29,7 +34,6 @@ class SetupController < ApplicationController
   def recheck
     @@ready = false
     index
-    render action: :index
   end
 
   private

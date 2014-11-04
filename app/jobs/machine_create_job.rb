@@ -10,11 +10,8 @@ class MachineCreateJob < BaseJob
     end
 
     step do
-      machine = MetaMachine.new \
-          hostname: @new_machine.hostname,
-          user_id: @new_machine.user_id,
-          libvirt_hypervisor_id: 1, # TODO
-          libvirt_machine_name: @new_machine.hostname # TODO
+      machine = MetaMachine.create_machine! \
+          @new_machine.hostname, @new_machine.user_id, 1, @new_machine.hostname # TODO: support multiple hypervisors
       machine.save!
 
       @new_machine.update_attributes! \
