@@ -20,5 +20,6 @@ class MetaMachine < ActiveRecord::Base
         libvirt_hypervisor_id: libvirt_hypervisor_id,
         libvirt_machine_name: libvirt_machine_name
     machine.save!
+    machine
   end
 end

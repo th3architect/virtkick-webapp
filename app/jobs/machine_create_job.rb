@@ -12,7 +12,6 @@ class MachineCreateJob < BaseJob
     step do
       machine = MetaMachine.create_machine! \
           @new_machine.hostname, @new_machine.user_id, 1, @new_machine.hostname # TODO: support multiple hypervisors
-      machine.save!
 
       @new_machine.update_attributes! \
           given_meta_machine_id: machine.id,
