@@ -33,7 +33,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'spring'
   gem 'web-console', '~> 2.0.0.beta2'
-  gem 'webmock'
 end
 
 group :development do
@@ -43,6 +42,7 @@ end
 group :test do
   gem 'codeclimate-test-reporter'
   gem 'timecop'
+  gem 'webmock'
 end
 
 # Gems that need to be required as last
