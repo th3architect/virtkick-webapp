@@ -1,0 +1,262 @@
+{
+    "num_results": 32,
+    "query": "openstack",
+    "results": [
+        {
+            "description": "This image provides a Wetty terminal with access to the following OpenStack command-line tools: keystone, swift, nova, trove, glance, cinder, heat, ceilometer, neutron.\n",
+            "is_automated": true,
+            "is_official": false,
+            "is_trusted": true,
+            "name": "centurylink/openstack-cli-wetty",
+            "star_count": 4
+        },
+        {
+            "description": "OpenStack rally for Ubuntu",
+            "is_automated": true,
+            "is_official": false,
+            "is_trusted": true,
+            "name": "frobware/openstack-rally",
+            "star_count": 0
+        },
+        {
+            "description": "",
+            "is_automated": true,
+            "is_official": false,
+            "is_trusted": true,
+            "name": "pataquets/openstack-dashboard",
+            "star_count": 0
+        },
+        {
+            "description": "",
+            "is_automated": true,
+            "is_official": false,
+            "is_trusted": true,
+            "name": "pataquets/openstack-keystone",
+            "star_count": 0
+        },
+        {
+            "description": "",
+            "is_automated": true,
+            "is_official": false,
+            "is_trusted": true,
+            "name": "chamerling/openstack-client",
+            "star_count": 0
+        },
+        {
+            "description": "A docker container for openstack which provides the stress tool. ",
+            "is_automated": true,
+            "is_official": false,
+            "is_trusted": true,
+            "name": "dkuffner/docker-openstack-stress",
+            "star_count": 0
+        },
+        {
+            "description": "",
+            "is_automated": true,
+            "is_official": false,
+            "is_trusted": true,
+            "name": "garland/docker-openstack-keystone",
+            "star_count": 0
+        },
+        {
+            "description": "",
+            "is_automated": false,
+            "is_official": false,
+            "is_trusted": false,
+            "name": "mpaone/openstack",
+            "star_count": 0
+        },
+        {
+            "description": "Full OpenStack CLI with interactive config and launcher scripts",
+            "is_automated": false,
+            "is_official": false,
+            "is_trusted": false,
+            "name": "tacc/openstack-cli",
+            "star_count": 0
+        },
+        {
+            "description": "",
+            "is_automated": false,
+            "is_official": false,
+            "is_trusted": false,
+            "name": "leseb/openstack-keystone",
+            "star_count": 0
+        },
+        {
+            "description": "",
+            "is_automated": false,
+            "is_official": false,
+            "is_trusted": false,
+            "name": "jechas01/openstack-nova",
+            "star_count": 0
+        },
+        {
+            "description": "",
+            "is_automated": false,
+            "is_official": false,
+            "is_trusted": false,
+            "name": "jechas01/openstack-glance",
+            "star_count": 0
+        },
+        {
+            "description": "",
+            "is_automated": false,
+            "is_official": false,
+            "is_trusted": false,
+            "name": "jechas01/openstack-base",
+            "star_count": 0
+        },
+        {
+            "description": "",
+            "is_automated": false,
+            "is_official": false,
+            "is_trusted": false,
+            "name": "jechas01/openstack-keystone",
+            "star_count": 0
+        },
+        {
+            "description": "",
+            "is_automated": false,
+            "is_official": false,
+            "is_trusted": false,
+            "name": "nirmata/openstack-base",
+            "star_count": 1
+        },
+        {
+            "description": "Features Python 2.7.5, Ipython 2.1.0 and Havana Openstack python client libraries",
+            "is_automated": false,
+            "is_official": false,
+            "is_trusted": false,
+            "name": "balle/openstack-ipython2-client",
+            "star_count": 0
+        },
+        {
+            "description": "",
+            "is_automated": true,
+            "is_official": false,
+            "is_trusted": true,
+            "name": "booleancandy/openstack_clients",
+            "star_count": 0
+        },
+        {
+            "description": "An ubuntu 12.10 LTS image that has nova, swift, keystone, cinder, and heat clients installed and preconfigured to work the Rackspace Public Cloud.",
+            "is_automated": false,
+            "is_official": false,
+            "is_trusted": false,
+            "name": "jyidiego/openstack-client",
+            "star_count": 1
+        },
+        {
+            "description": "",
+            "is_automated": false,
+            "is_official": false,
+            "is_trusted": false,
+            "name": "raxcloud/openstack-client",
+            "star_count": 0
+        },
+        {
+            "description": "",
+            "is_automated": false,
+            "is_official": false,
+            "is_trusted": false,
+            "name": "hrich/openstack-juno",
+            "star_count": 0
+        },
+        {
+            "description": "",
+            "is_automated": false,
+            "is_official": false,
+            "is_trusted": false,
+            "name": "budnyjj/openstack-keystone",
+            "star_count": 0
+        },
+        {
+            "description": "",
+            "is_automated": false,
+            "is_official": false,
+            "is_trusted": false,
+            "name": "paulczar/openstack-agent",
+            "star_count": 0
+        },
+        {
+            "description": "",
+            "is_automated": false,
+            "is_official": false,
+            "is_trusted": false,
+            "name": "epheo/openstack-base",
+            "star_count": 0
+        },
+        {
+            "description": "",
+            "is_automated": false,
+            "is_official": false,
+            "is_trusted": false,
+            "name": "booleancandy/openstack-clients",
+            "star_count": 0
+        },
+        {
+            "description": "",
+            "is_automated": false,
+            "is_official": false,
+            "is_trusted": false,
+            "name": "jyidiego/openstack-client-rumm-ansible",
+            "star_count": 0
+        },
+        {
+            "description": "OpenStack development environment (using Docker virt driver); Forked from paulczar's dockenstack",
+            "is_automated": true,
+            "is_official": false,
+            "is_trusted": true,
+            "name": "ewindisch/dockenstack",
+            "star_count": 11
+        },
+        {
+            "description": "image info",
+            "is_automated": false,
+            "is_official": false,
+            "is_trusted": false,
+            "name": "coanor/openstack_basic_env",
+            "star_count": 0
+        },
+        {
+            "description": "",
+            "is_automated": false,
+            "is_official": false,
+            "is_trusted": false,
+            "name": "jkprow/openstack_chefclient",
+            "star_count": 0
+        },
+        {
+            "description": "",
+            "is_automated": false,
+            "is_official": false,
+            "is_trusted": false,
+            "name": "jkprow/openstack_repo",
+            "star_count": 0
+        },
+        {
+            "description": "SoftLayer Jumpgate WSGi OpenStack REST API proxy containerized",
+            "is_automated": true,
+            "is_official": false,
+            "is_trusted": true,
+            "name": "bodenr/jumpgate",
+            "star_count": 0
+        },
+        {
+            "description": "Docker for Testing Packer with OpenStack",
+            "is_automated": true,
+            "is_official": false,
+            "is_trusted": true,
+            "name": "wallnerryan/packer-stack",
+            "star_count": 0
+        },
+        {
+            "description": "Docker images for the Marconi Message Queuing service from OpenStack",
+            "is_automated": true,
+            "is_official": false,
+            "is_trusted": true,
+            "name": "sebasmagri/docker-marconi",
+            "star_count": 0
+        }
+    ]
+}

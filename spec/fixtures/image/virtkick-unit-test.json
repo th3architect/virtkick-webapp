@@ -1,0 +1,14 @@
+{
+    "num_results": 1,
+    "query": "virtkick-unit-test",
+    "results": [
+        {
+            "description": "Ignore this repo.",
+            "is_automated": false,
+            "is_official": false,
+            "is_trusted": false,
+            "name": "nowaker/virtkick-unit-test",
+            "star_count": 1
+        }
+    ]
+}

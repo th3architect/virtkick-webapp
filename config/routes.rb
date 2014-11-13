@@ -34,6 +34,9 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/images', to: 'images#index', as: 'images'
+  post '/images', to: 'images#index', as: 'search_images'
+
   get '/progress/:id', to: 'progress#progress', as: 'progress'
   get '/machine_progress/:id', to: 'progress#machine', as: 'machine_progress'
 end

@@ -33,6 +33,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'spring'
   gem 'web-console', '~> 2.0.0.beta2'
+  gem 'webmock'
 end
 
 group :development do

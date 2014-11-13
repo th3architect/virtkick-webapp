@@ -1,0 +1,33 @@
+- @header = 'Images'
+- @icon = 'aperture'
+
+#page-images
+  p.text-center Don't start from scratch - use a Docker image to start right away.
+
+  = form_tag search_images_path do
+    = text_field_tag 'search', params[:search], id: 'image_search',
+          placeholder: 'Search in thousands of images...', class: 'form-control'
+
+  table.table.table-striped.sortable
+    thead
+      tr
+        /th.avatar
+        th.name Image
+        th.description Description
+        th.stars.text-right Stars
+        th.actions
+    tbody
+      - for image in @images
+        tr.appliance
+          /td.avatar
+          /  - if image.avatar
+          /    = gravatar_for image.avatar, size: 20, md5: true
+          td.name = image.name
+          td.description = image.description
+          td.stars.text-right = image.stars
+          td.text-right
+            a.btn.btn-primary.create href='/' Create
+
+- content_for :scripts do
+  javascript:
+    document.getElementById('image_search').focus();

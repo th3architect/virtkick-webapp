@@ -56,6 +56,9 @@ html
                   = navbar_item machines_path do
                     span.oi.oi-monitor
                     | Machines
+                  = navbar_item images_path do
+                    span.oi.oi-aperture
+                    span.menu-item Images
                 - else
                   = navbar_item new_user_session_path do
                     span.fa.fa-sign-in

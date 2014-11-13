@@ -1,0 +1,120 @@
+- id: 10
+  name: ubuntu
+  description: Official Ubuntu base image
+  stars: 919
+  avatar: 26da7b36ff8bb5db4211400358dc7c4e
+- id: 20
+  name: centos
+  description: The official build of CentOS.
+  stars: 586
+  avatar: 26da7b36ff8bb5db4211400358dc7c4e
+- id: 30
+  name: nginx
+  description: Official build of Nginx.
+  stars: 361
+  avatar: 26da7b36ff8bb5db4211400358dc7c4e
+- id: 40
+  name: postgres
+  description: The PostgreSQL object-relational database system provides reliability and data integrity.
+  stars: 321
+  avatar: 26da7b36ff8bb5db4211400358dc7c4e
+- id: 50
+  name: node
+  description: Node.js is a JavaScript-based platform for server-side and networking applications.
+  stars: 311
+  avatar: 26da7b36ff8bb5db4211400358dc7c4e
+- id: 60
+  name: redis
+  description: Redis is an open source key-value store that functions as a data structure server.
+  stars: 306
+  avatar: 26da7b36ff8bb5db4211400358dc7c4e
+- id: 70
+  name: mongo
+  description: MongoDB document databases provide high availability and easy scalability.
+  stars: 255
+  avatar: 26da7b36ff8bb5db4211400358dc7c4e
+- id: 80
+  name: mysql
+  description: MySQL is a widely used, open-source relational database management system (RDBMS).
+  stars: 254
+  avatar: 26da7b36ff8bb5db4211400358dc7c4e
+- id: 90
+  name: debian
+  description: (Semi) Official Debian base image.
+  stars: 223
+  avatar: 26da7b36ff8bb5db4211400358dc7c4e
+- id: 100
+  name: jenkins
+  description: Official Jenkins Docker image
+  stars: 223
+  avatar: 26da7b36ff8bb5db4211400358dc7c4e
+- id: 110
+  name: registry
+  description: Containerized docker registry
+  stars: 120
+  avatar: 26da7b36ff8bb5db4211400358dc7c4e
+- id: 120
+  name: wordpress
+  description: The WordPress rich content management system can utilize plugins, widgets, and themes.
+  stars: 112
+  avatar: 26da7b36ff8bb5db4211400358dc7c4e
+- id: 130
+  name: busybox
+  description: Busybox base image.
+  stars: 92
+  avatar: 26da7b36ff8bb5db4211400358dc7c4e
+- id: 140
+  name: fedora
+  description: (Semi) Official Fedora base image.
+  stars: 90
+  avatar: 26da7b36ff8bb5db4211400358dc7c4e
+- id: 150
+  name: golang
+  description: Go (golang) is a general purpose, higher-level, imperative programming language.
+  stars: 83
+  avatar: 26da7b36ff8bb5db4211400358dc7c4e
+- id: 160
+  name: rails
+  description: Rails is an open-source web application framework written in Ruby.
+  stars: 79
+  avatar: 26da7b36ff8bb5db4211400358dc7c4e
+- id: 170
+  name: java
+  description: Java is a concurrent, class-based, and object-oriented programming language.
+  stars: 68
+  avatar: 26da7b36ff8bb5db4211400358dc7c4e
+- id: 180
+  name: ruby
+  description: Ruby is a dynamic, reflective, object-oriented, general-purpose, open-source programming language.
+  stars: 60
+  avatar: 26da7b36ff8bb5db4211400358dc7c4e
+- id: 190
+  name: python
+  description: Python is an interpreted, interactive, object-oriented, open-source programming language.
+  stars: 58
+  avatar: 26da7b36ff8bb5db4211400358dc7c4e
+- id: 200
+  name: php
+  description: While designed for web development, the PHP scripting language also provides general-purpose use.
+  stars: 42
+  avatar: 26da7b36ff8bb5db4211400358dc7c4e
+- id: 210
+  name: opensuse
+  description: This project contains the stable releases of the openSUSE distribution.
+  stars: 19
+  avatar: 26da7b36ff8bb5db4211400358dc7c4e
+- id: 220
+  name: perl
+  description: Perl is a high-level, general-purpose, interpreted, dynamic programming language.
+  stars: 18
+  avatar: 26da7b36ff8bb5db4211400358dc7c4e
+- id: 230
+  name: gcc
+  description: The GNU Compiler Collection is a compiling system that supports several languages.
+  stars: 18
+  avatar: 26da7b36ff8bb5db4211400358dc7c4e
+- id: 240
+  name: clojure
+  description: Clojure is a dialect of Lisp that runs on the JVM.
+  stars: 18
+  avatar: 26da7b36ff8bb5db4211400358dc7c4e

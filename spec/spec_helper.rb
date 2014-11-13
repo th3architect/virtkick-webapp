@@ -4,6 +4,9 @@ if ENV['CODECLIMATE_REPO_TOKEN']
 end
 
 
+require 'webmock/rspec'
+WebMock.allow_net_connect!
+
 RSpec.configure do |config|
   config.backtrace_exclusion_patterns = []
   config.filter_run :focus

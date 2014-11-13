@@ -22,4 +22,7 @@
 - id: 80
   code: freebsd
   name: FreeBSD
-
+- id: 1000
+  code: boot2docker
+  name: boot2docker
+  hidden: true
