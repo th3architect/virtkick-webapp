@@ -5,7 +5,7 @@
   short_name: 14.04.1
   long_name: Ubuntu 14.04.1 LTS
   mirrors: 
-   - http://releases.ubuntu.com/14.04/ubuntu-14.04.1-server-amd64.iso
+   - http://releases.ubuntu.com/14.04/ubuntu-14.04.1-server-amd64.metalink
 - id: 11
   iso_distro_id: 10
   file: ubuntu-13.10-server-amd64.iso
@@ -13,7 +13,7 @@
   short_name: 13.10
   long_name: Ubuntu 13.10
   mirrors:
-   - http://releases.ubuntu.com/13.10/ubuntu-13.10-server-amd64.iso
+   - http://releases.ubuntu.com/13.10/ubuntu-13.10-server-amd64.metalink
 - id: 20
   iso_distro_id: 20
   file: debian-7.6.0-amd64-DVD-1.iso
@@ -45,15 +45,15 @@
   short_name: 20
   long_name: Fedora 20
   mirrors:
-   - http://dl.fedoraproject.org/pub/fedora/linux//releases/20/Live/x86_64/Fedora-Live-Desktop-x86_64-20-1.iso
+   - https://mirrors.fedoraproject.org/metalink?path=pub/fedora/linux/releases/20/Live/x86_64/Fedora-Live-Desktop-x86_64-20-1.iso
 - id: 50
   iso_distro_id: 50
-  file: openSUSE-13.1-DVD-x86_64.iso
+  file: openSUSE-13.2-DVD-x86_64.iso
   bit: 64
-  short_name: 13.1
-  long_name: openSUSE 13.1
+  short_name: 13.2
+  long_name: openSUSE 13.2
   mirrors:
-   - http://download.opensuse.org/distribution/13.1/iso/openSUSE-13.1-DVD-x86_64.iso
+   - http://download.opensuse.org/distribution/13.2/iso/openSUSE-13.2-DVD-x86_64.iso.meta4
 - id: 60
   iso_distro_id: 60
   file: coreos_production_iso_image.iso
@@ -78,3 +78,6 @@
   long_name: FreeBSD 10.0
   mirrors:
    - http://ftp.freebsd.org/%2Fpub/FreeBSD/releases/ISO-IMAGES/10.0/FreeBSD-10.0-RELEASE-amd64-dvd1.iso
+   - http://ftp.icm.edu.pl/packages/FreeBSD/releases/ISO-IMAGES/10.0/FreeBSD-10.0-RELEASE-amd64-dvd1.iso
+   - http://ftp.riken.jp/FreeBSD/ISO-IMAGES-amd64/10.0/FreeBSD-10.0-RELEASE-amd64-dvd1.iso
+   - http://mirrors.sonic.net/freebsd/ISO-IMAGES-amd64/10.0/FreeBSD-10.0-RELEASE-amd64-dvd1.iso
