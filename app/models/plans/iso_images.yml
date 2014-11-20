@@ -5,63 +5,71 @@
   short_name: 14.04.1
   long_name: Ubuntu 14.04.1 LTS
   mirrors: 
-   - http://releases.ubuntu.com/14.04/ubuntu-14.04.1-server-amd64.metalink
+  - http://releases.ubuntu.com/14.04/ubuntu-14.04.1-server-amd64.metalink
+  sha512: a612c60e926ce5363742417b6d2b3c6ce87ae1145a49ea3506b8a000c641ad22909129757dae2f96963b3fe26af72e6554fec4667a5927e18c1d895067adc138
 - id: 11
   iso_distro_id: 10
-  file: ubuntu-13.10-server-amd64.iso
+  file: ubuntu-14.10-server-amd64.iso
   bit: 64
-  short_name: 13.10
-  long_name: Ubuntu 13.10
+  short_name: 14.10
+  long_name: Ubuntu 14.10
   mirrors:
-   - http://releases.ubuntu.com/13.10/ubuntu-13.10-server-amd64.metalink
+  - http://releases.ubuntu.com/14.10/ubuntu-14.10-server-amd64.metalink
+  sha512: dedd5d17723d34257e9b5ca3f584da12e487946e0adb406435942cc95326fe9c5ddcaae0310ae5be9e00f959abf06ed31f8857035022c48eaaf21dbd049c65e5
 - id: 20
   iso_distro_id: 20
-  file: debian-7.6.0-amd64-DVD-1.iso
+  file: debian-7.7.0-amd64-netinst.iso
   bit: 64
   short_name: wheezy
   long_name: Debian wheezy
   mirrors:
-   - http://ftp.cae.tntech.edu/debian-cd/dvd/debian-7.6.0-amd64-DVD-1.iso
+  - http://cdimage.debian.org/debian-cd/7.7.0/amd64/iso-cd/debian-7.7.0-amd64-netinst.iso
+  sha512: 5cb6e4fea55fbb5173f90c3a545b843c6c193e29c3aa32b3306c9bbdfb1ad6a6a36ae8be50e91af9d03d5f21c472bd05d04d3508172e0b519e76714333c7c74b
 - id: 21
   iso_distro_id: 20
-  file: debian-testing-amd64-DVD-1.iso
+  file: debian-testing-amd64-netinst.iso
   bit: 64
   short_name: jessie
   long_name: Debian jessie
   mirrors:
-   - http://ftp.ie.debian.org/debian-cd-weekly/amd64/iso-dvd/debian-testing-amd64-DVD-1.iso
+  - http://cdimage.debian.org/cdimage/daily-builds/daily/arch-latest/amd64/iso-cd/debian-testing-amd64-netinst.iso
+  # no sha512, the URL points to the newest release
 - id: 30
   iso_distro_id: 30
-  file: CentOS-7.0-1406-x86_64-DVD.iso
+  file: CentOS-7.0-1406-x86_64-NetInstall.iso
   bit: 64
   short_name: 7.0
   long_name: CentOS 7.0
   mirrors:
-   - http://mirror.anl.gov/pub/centos/7.0.1406/isos/x86_64/CentOS-7.0-1406-x86_64-DVD.iso
+  - http://mirror.anl.gov/pub/centos/7.0.1406/isos/x86_64/CentOS-7.0-1406-x86_64-NetInstall.iso
+  sha512: dd7805512af8e47afa533c1a7b38662c99ee92520e9dd2e576c011431725d17a4630158590896e3e5b7c18375db214060e3b7ccc623cf6f74263e104c3a16b75
 - id: 40
   iso_distro_id: 40
-  file: Fedora-Live-Desktop-x86_64-20-1.iso
+  file: Fedora-20-x86_64-netinst.iso
   bit: 64
   short_name: 20
   long_name: Fedora 20
   mirrors:
-   - https://mirrors.fedoraproject.org/metalink?path=pub/fedora/linux/releases/20/Live/x86_64/Fedora-Live-Desktop-x86_64-20-1.iso
+  - https://mirrors.fedoraproject.org/metalink?path=pub/fedora/linux/releases/20/Fedora/x86_64/iso/Fedora-20-x86_64-netinst.iso
+  sha512: 33e9e3b93658b1c2a90000bc22f889779cb1d87a0f7f8562c11cae1fbc058fa051b9ecb3ff5c88fdbad9c4e9d8312503d514a981cd7378b38a2de4b49cefcc6b
 - id: 50
   iso_distro_id: 50
-  file: openSUSE-13.2-DVD-x86_64.iso
+  file: openSUSE-13.2-NET-x86_64.iso
   bit: 64
   short_name: 13.2
   long_name: openSUSE 13.2
   mirrors:
-   - http://download.opensuse.org/distribution/13.2/iso/openSUSE-13.2-DVD-x86_64.iso.meta4
+  - http://download.opensuse.org/distribution/13.2/iso/openSUSE-13.2-NET-x86_64.iso.meta4
+  sha512: 942161300759f323c9a1fd47b0b9fe95580c05936bb1b287fb61fedf9b9bb49d2907bb34a48bc966f8196acb743dd9f345669120c9783cb560043e563f09bbb7
 - id: 60
   iso_distro_id: 60
   file: coreos_production_iso_image.iso
   bit: 64
-  short_name: 431.0.0
-  long_name: CoreOS Alpha 431.0.0
+  short_name: 444.5.0
+  long_name: CoreOS Alpha 444.5.0
   mirrors:
-   - http://storage.core-os.net/coreos/amd64-usr/alpha/coreos_production_iso_image.iso
+  - http://stable.release.core-os.net/amd64-usr/current/coreos_production_iso_image.iso
+  # no sha512, the URL points to the newest release
 - id: 70
   iso_distro_id: 70
   file: archlinux-2014.09.03-dual.iso
@@ -69,15 +77,18 @@
   short_name: 2014.09.03
   long_name: Arch Linux 2014.09.03
   mirrors:
-   - http://ftp.uni-kl.de/pub/linux/archlinux/iso/2014.09.03/archlinux-2014.09.03-dual.iso
+  - https://www.archlinux.org/releng/releases/2014.11.01/torrent/
+  - http://mirror.de.leaseweb.net/archlinux/iso/2014.11.01/archlinux-2014.11.01-dual.iso
+  - http://mirror.us.leaseweb.net/archlinux/iso/2014.11.01/archlinux-2014.11.01-dual.iso
+  - http://syd.mirror.rackspace.com/archlinux/iso/2014.11.01/archlinux-2014.11.01-dual.iso
+  sha512: 96f291a861257bec2cd08bd748932f57759d16deebaf29bb8811e447093c04157b17b962396430ed8393600c8e3193565f1ba1dcf75e76ca2df54c782d5b1ed4
 - id: 80
   iso_distro_id: 80
-  file: FreeBSD-10.0-RELEASE-amd64-dvd1.iso
+  file: FreeBSD-10.1-RELEASE-amd64-disc1.iso
   bit: 64
   short_name: 10.0
   long_name: FreeBSD 10.0
   mirrors:
-   - http://ftp.freebsd.org/%2Fpub/FreeBSD/releases/ISO-IMAGES/10.0/FreeBSD-10.0-RELEASE-amd64-dvd1.iso
-   - http://ftp.icm.edu.pl/packages/FreeBSD/releases/ISO-IMAGES/10.0/FreeBSD-10.0-RELEASE-amd64-dvd1.iso
-   - http://ftp.riken.jp/FreeBSD/ISO-IMAGES-amd64/10.0/FreeBSD-10.0-RELEASE-amd64-dvd1.iso
-   - http://mirrors.sonic.net/freebsd/ISO-IMAGES-amd64/10.0/FreeBSD-10.0-RELEASE-amd64-dvd1.iso
+  - http://ftp.freebsd.org/pub/FreeBSD/releases/amd64/amd64/ISO-IMAGES/10.1/FreeBSD-10.1-RELEASE-amd64-disc1.iso
+  - http://ftp.icm.edu.pl/packages/FreeBSD/releases/ISO-IMAGES/10.1/FreeBSD-10.1-RELEASE-amd64-disc1.iso
+  sha512: 0a4962911741311ccc8e001e4800e9319d16d966f6f5ac15fad4ff789ff969a8b368f37ebbcc824642413fe352fac317ae4fde69ca9918e174027fd7ba066ce9
