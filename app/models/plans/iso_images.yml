@@ -72,10 +72,10 @@
   # no sha512, the URL points to the newest release
 - id: 70
   iso_distro_id: 70
-  file: archlinux-2014.09.03-dual.iso
+  file: archlinux-2014.11.01-dual.iso
   bit: 64
-  short_name: 2014.09.03
-  long_name: Arch Linux 2014.09.03
+  short_name: 2014.11.01
+  long_name: Arch Linux 2014.11.01
   mirrors:
   - https://www.archlinux.org/releng/releases/2014.11.01/torrent/
   - http://mirror.de.leaseweb.net/archlinux/iso/2014.11.01/archlinux-2014.11.01-dual.iso
@@ -86,8 +86,8 @@
   iso_distro_id: 80
   file: FreeBSD-10.1-RELEASE-amd64-disc1.iso
   bit: 64
-  short_name: 10.0
-  long_name: FreeBSD 10.0
+  short_name: 10.1
+  long_name: FreeBSD 10.1
   mirrors:
   - http://ftp.freebsd.org/pub/FreeBSD/releases/amd64/amd64/ISO-IMAGES/10.1/FreeBSD-10.1-RELEASE-amd64-disc1.iso
   - http://ftp.icm.edu.pl/packages/FreeBSD/releases/ISO-IMAGES/10.1/FreeBSD-10.1-RELEASE-amd64-disc1.iso
