@@ -89,6 +89,9 @@ define(function(require) {
       }
     };
 
+    $scope.requesting = {};
+    $scope.canDo = {};
+
     var timeoutHandler;
     function updateState() {
       $http.get(baseUrl + '.json').then(function(response) {
