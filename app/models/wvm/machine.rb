@@ -10,7 +10,7 @@ class Wvm::Machine < Wvm::Base
 
   def self.find id
     response = call :get, "/1/instance/#{id}"
-    puts response.to_yaml
+
     params = {
       processor_usage: response[:cpu_usage],
       hostname: response[:name],
