@@ -10,7 +10,6 @@ define(function(require) {
 
   var angular = require('angular');
   
-  console.log("SHOW");
   var app = angular.module('app',
     ['ui.bootstrap', 'ngMessages', require('./console')]
   );
@@ -19,8 +18,6 @@ define(function(require) {
     $scope.data = {
       menuCollapse: false
     };
-    $scope.requesting = {};
-    $scope.canDo = {};
   });
 
   app.controller('ShowMachineCtrl', function($scope, $rootScope, $http) {
@@ -77,15 +74,9 @@ define(function(require) {
       $.post(actionUrl).success(function(data) {
         handleProgress(data.progress_id, function() {
           $scope.requesting[name]= false;
+          $scope.data.error = null;
         }, function(error) {
           $scope.requesting[name]= false;
-          return;
-          var alert = '<div class="alert alert-danger fade in">' +
-            '<button class="close" data-dismiss="alert">×</button>' +
-            error +
-            '</div>';
-          $('.controls').prepend($(alert));
-          getCurrentState();
         });
       });
     };
@@ -102,7 +93,6 @@ define(function(require) {
     function updateState() {
       $http.get(baseUrl + '.json').then(function(response) {
         $scope.machine = response.data;
-        console.log($scope.machine);
         timeoutHandler = setTimeout(updateState, 1000);
       }, function() {
         $scope.machine.stateDisconnected = true;

@@ -34,6 +34,8 @@
 
   = render partial: '/flash', locals: {section: 'power'}
 
+  .alert.alert-danger.fade.in(ng-if="data.error")
+    | {{data.error}}
   .controls
     .btn-group
       a.btn.btn-default ng-click="doAction('start')" ng-class="{disabled: !canDo.start}"

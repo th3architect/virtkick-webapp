@@ -8,6 +8,12 @@ define(function(require) {
 
   var app = angular.module('app', ['ui.bootstrap', 'ngMessages']);
 
+  app.controller('AppCtrl', function($scope) {
+    $scope.data = {
+      menuCollapse: false
+    };
+  });
+
   require('csrfSetup')(app);
 
 
