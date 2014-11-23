@@ -7,14 +7,17 @@
 - content_for :scripts do
   = requirejs_include_tag 'pages/machineShow'
 
-#page-machine
-  - tabs = %w(power console storage settings)
-  ul.nav.nav-pills.nav-justified
-    - for tab in tabs
-      li class="#{'active' if tab == 'power'}"
-        a data-toggle='tab' href="##{tab}" class=tab = tab.capitalize
 
-  .tab-content
-    - for page in tabs
-      .tab-pane id=page class="#{'active' if page == 'power'}"
-        = render partial: "machines/index/#{page}"
+#page-machine.ng-cloak ng-controller="ShowMachineCtrl as machine"
+  - tabs = %w(power console storage settings)
+
+  script type="application/json" id="initialMachineData"
+    = @machine.to_json.html_safe
+
+  tabset justified=1 type='pills'
+    - for tab in tabs
+      tab heading=tab.capitalize active="data.active.#{tab}"
+        div id="#{tab}"
+          = render partial: "machines/index/#{tab}"
+
+

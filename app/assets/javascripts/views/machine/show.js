@@ -1,19 +1,128 @@
 define(function(require) {
   require('appcommon');
   var $ = require('jquery');
-  require('bootstrap');
+  //require('bootstrap');
   require('!domReady');
   require('twitter/bootstrap/rails/confirm');
-  require('./_console');
+  //require('./_console');
+  require('ui-bootstrap');
+  require('angular-messages');
 
-  var hash = window.location.hash.substring(1);
-  if (hash.length > 0) {
-    $('a.' + hash).click();
-  }
+  var angular = require('angular');
+  
+  console.log("SHOW");
+  var app = angular.module('app',
+    ['ui.bootstrap', 'ngMessages', require('./console')]
+  );
+
+  app.controller('AppCtrl', function($scope) {
+    $scope.data = {
+      menuCollapse: false
+    };
+    $scope.requesting = {};
+    $scope.canDo = {};
+  });
+
+  app.controller('ShowMachineCtrl', function($scope, $rootScope, $http) {
+    $scope.machine = JSON.parse($('#initialMachineData').html());
+    var baseUrl = '/machines/' + $scope.machine.id;
+
+    $scope.toHumanValue = function(val) {
+      val += " MB";
+      return val;
+    }
 
 
-  $('.nav-pills a').click(function() {
-    window.location.hash = $(this).attr('class');
+
+
+    var handleProgress = function(progressId, onSuccess, onError) {
+        var id = setInterval(function() {
+          return $.ajax('/progress/' + progressId).success(function(data) {
+            if (!data.finished) {
+              return;
+            }
+            clearInterval(id);
+
+            data.error === null ? onSuccess() : onError(data.error);
+          });
+        }, 500);
+      };
+
+      $scope.$watch(function() {
+
+        if($scope.machine.status.attributes.id === 'stopped') {
+          $scope.canDo = {
+            start: !$scope.requesting.starting, pause: false, resume: false, stop: false, restart: false, force_restart: false, force_stop: false
+          };
+        }
+        else {
+          $scope.canDo = {
+            start: false,
+            pause: $scope.machine.status.attributes.running,
+            resume: !$scope.machine.status.attributes.running,
+            stop: $scope.machine.status.attributes.running,
+            restart: $scope.machine.status.attributes.running && !$scope.requesting.restart,
+            force_restart:true,
+            force_stop: true
+          };
+        }
+
+      });
+
+    $scope.doAction = function(name) {
+
+      var actionUrl = baseUrl + '/' + name;
+
+      $scope.requesting[name]= true;
+      $.post(actionUrl).success(function(data) {
+        handleProgress(data.progress_id, function() {
+          $scope.requesting[name]= false;
+        }, function(error) {
+          $scope.requesting[name]= false;
+          return;
+          var alert = '<div class="alert alert-danger fade in">' +
+            '<button class="close" data-dismiss="alert">×</button>' +
+            error +
+            '</div>';
+          $('.controls').prepend($(alert));
+          getCurrentState();
+        });
+      });
+    };
+
+
+
+    $scope.data = {
+      active: {
+        power: true,
+      }
+    };
+
+    var timeoutHandler;
+    function updateState() {
+      $http.get(baseUrl + '.json').then(function(response) {
+        $scope.machine = response.data;
+        console.log($scope.machine);
+        timeoutHandler = setTimeout(updateState, 1000);
+      }, function() {
+        $scope.machine.stateDisconnected = true;
+        timeoutHandler = setTimeout(updateState, 5000);
+      });
+    }
+    timeoutHandler = setTimeout(updateState, 1000);
+
+    $scope.$on('$destroy', function() {
+      clearTimeout(timeoutHandler);
+    });
+    
+
+    $scope.$watch('data.active.console', function(val) {
+      $scope.$parent.data.menuCollapse = $scope.data.active.console;
+    });
+  });
+
+  angular.element().ready(function() {
+    angular.bootstrap(document, ['app']);
   });
 
 
@@ -57,78 +166,6 @@ define(function(require) {
     })
   });
 
-  // Power Tab
-
-  var actions = {
-    'start': ['Starting', 'icon fa fa-spinner fa-spin'],
-    'pause': ['Paused', 'icon fa fa-pause'],
-    'resume': ['Running', 'icon fa fa-play'],
-    'stop': ['Stopping', 'icon fa fa-spinner fa-spin'],
-    'restart': ['Restart requested', 'icon fa fa-play'],
-    'hard-stop': ['Hard stopping', 'icon fa fa-spinner fa-spin'],
-    'hard-reset': ['Resetting', 'icon fa fa-spinner fa-spin']
-  };
-
-  var $powerState = $('.power-state');
-
-  var reloadButtonState = function() {
-    var state = $powerState.text().trim();
-    if (state === 'Running') {
-      $('.only-on').removeClass('disabled');
-      $('.start, .resume').addClass('disabled');
-    } else if (state == 'Paused') {
-      $('.only-on, .start').addClass('disabled');
-      $('.start').addClass('disabled');
-      $('.resume').removeClass('disabled');
-    } else {
-      $('.only-on').addClass('disabled');
-      $('.start').removeClass('disabled');
-    }
-  };
-
-  reloadButtonState();
-
-  $('.controls a.action').click(function () {
-    var $this = $(this);
-    var action = $this.text().toLowerCase().trim();
-    var actionUrl = $this.attr('href');
-
-    var tempState = actions[action][0];
-    var tempClasses = actions[action][1];
-
-    var $powerState = $('.power-state');
-    var $icon = $powerState.find('.icon');
-    var $status = $powerState.find('.status');
-
-    $icon.attr('class', tempClasses);
-    $status.text(tempState);
-
-    reloadButtonState();
-
-    var getCurrentState = function() {
-      $.ajax(window.location.pathname + '/state').success(function(data) {
-        $icon.attr('class', 'icon ' + data.icon);
-        $status.text(data.name);
-        $powerState.data('running', data.running);
-        reloadButtonState();
-      });
-    };
-
-    $.post(actionUrl).success(function(data) {
-      handleProgress(data.progress_id, function() {
-        getCurrentState();
-      }, function(error) {
-        var alert = '<div class="alert alert-danger fade in">' +
-          '<button class="close" data-dismiss="alert">×</button>' +
-          error +
-          '</div>';
-        $('.controls').prepend($(alert));
-        getCurrentState();
-      });
-    });
-
-    return false;
-  });
 
   // Storage Tab
 

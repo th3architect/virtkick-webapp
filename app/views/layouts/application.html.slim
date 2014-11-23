@@ -10,7 +10,7 @@ html
     link rel='shortcut icon' href='/favicon.ico'
     = stylesheet_link_tag 'application', media: 'all'
     = csrf_meta_tags
-  body
+  body(ng-app=1)
     .crowdfunding
       p
         a href='https://www.indiegogo.com/projects/virtkick-take-cloud-back' WE ARE CROWDFUNDING »
@@ -19,7 +19,7 @@ html
       .container
         = render partial: 'layouts/newsletter'
 
-    .container.main
+    .container.main(ng-controller="AppCtrl")
       .row.header
         .menu.col-md-3.hidden-xs.hidden-sm
           = link_to machines_path do
@@ -38,7 +38,7 @@ html
           = yield :action
 
       .row
-        .col-md-3.side-menu-wrapper
+        .col-md-3.side-menu-wrapper ng-class="{collapsed: data.menuCollapse}"
           nav.navbar.navbar-default.side-menu role="navigation"
             .navbar-header.hidden-md.hidden-lg
               button.navbar-toggle data-target="#navbar-collapsable" data-toggle="collapse" type="button"

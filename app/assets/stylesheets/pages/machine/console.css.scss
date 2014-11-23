@@ -1,4 +1,5 @@
 #page-machine {
+
   .console-window-wrapper {
     position: absolute;
     box-sizing: border-box;
@@ -18,9 +19,12 @@
         border-radius: 4px;
         overflow: hidden;
         margin-bottom: 0;
+        min-width: 640px;
+        min-height: 480px;
         
         canvas {
           margin-bottom: 0;
+          @extend .cursor-hidden;
         }
       }
 

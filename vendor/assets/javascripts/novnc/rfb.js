@@ -619,7 +619,6 @@ mouseMove = function(x, y) {
 
     mouse_arr = mouse_arr.concat(
             pointerEvent(display.absX(x), display.absY(y)));
-    
     checkEvents();
 };
 

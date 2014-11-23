@@ -44,6 +44,7 @@ class MachinesController < ApplicationController
     @disk_types = Infra::DiskType.all
     @disk = Infra::Disk.new
     @iso_images = Plans::IsoImage.all
+    respond_with @machine
   end
 
   def destroy

@@ -377,3 +377,10 @@ h3 {
 // .ng-invalid {
 //   @extend .has-error;
 // }
+
+// for UI bootstrap
+// https://github.com/angular-ui/bootstrap/pull/1932#issuecomment-41919833
+// https://github.com/angular-ui/bootstrap/commit/8620aedba99b05822311c4529a7877e6f62754d6
+.nav, .pagination, .carousel a {
+  cursor: pointer;
+}

@@ -1,8 +1,7 @@
-#page-console.text-center
+#page-console.text-center(ng-class="{focused: consoleFocused}")
   .console-window-wrapper
-    .console-window
-      .canvas-wrapper
-        canvas class="cursor-hidden" data-password=@machine.vnc_password data-uuid=@machine.uuid
+    .console-window(ng-class="{focused: consoleFocused}")
+      console password=@machine.vnc_password uuid=@machine.uuid focused="consoleFocused" state="data"
       .vm-actions
         .iso
           = form_for @machine, as: :machine, url: mount_iso_machine_path(@machine), method: :post, remote: true do |f|
@@ -19,9 +18,5 @@
           = link_to force_restart_machine_path(@machine), method: :post, remote: true, class: 'btn btn-default hardreset',
               data: {confirm: 'Are you sure? This may cause data loss.', confirm_title: "Hard reset #{@machine.hostname}"}
             | Hard reset
-      p.bright-violet.browser-info
-        | If the VNC console doesn't appear, please upgrade your browser or try a different one.
-      p.bright-violet.status.hidden
-        | Machine killed. Now starting it again... &nbsp;
-        i.fa.fa-spinner.fa-spin
-
+      p.bright-violet.browser-info(ng-if='!machine.status.attributes.running')
+        | Machine is not started
