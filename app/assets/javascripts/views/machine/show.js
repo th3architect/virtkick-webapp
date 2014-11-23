@@ -77,6 +77,7 @@ define(function(require) {
           $scope.data.error = null;
         }, function(error) {
           $scope.requesting[name]= false;
+          $scope.data.error = error;
         });
       });
     };
