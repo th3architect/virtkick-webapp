@@ -14,6 +14,12 @@
   script type="application/json" id="initialMachineData"
     = @machine.to_json.html_safe
 
+  script type="application/json" id="isoImagesData"
+    = @iso_images.to_json.html_safe
+
+  script type="application/json" id="isoData"
+    = @isos.to_json.html_safe
+
   tabset justified=1 type='pills'
     - for tab in tabs
       tab heading=tab.capitalize active="data.active.#{tab}"

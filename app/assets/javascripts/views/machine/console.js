@@ -68,6 +68,16 @@ define(function(require) {
       rfb.connect(host, port, password, window.location.pathname.substr(1) + "/vnc");
     };
 
+    // http://stackoverflow.com/questions/16881478/how-to-call-a-method-defined-in-an-angularjs-directive
+    if(scope.control) {
+      scope.control.connect = function() {
+        if(scope.state.vncState == 'normal')
+          return;
+        connectLoop = true;
+        connect();
+      };
+    }
+
     scope.rfb = rfb = new RFB({
       'target': element.find('canvas')[0],
       'repeaterID': '',
@@ -77,10 +87,8 @@ define(function(require) {
       'shared': true,
       'focused': false,
       'onUpdateState': function(rfb, state, oldstate, statusMsg) {
-
         scope.state.vncState = state;
         if(state === 'failed') {
-
           setTimeout(connect, 1000);
         }
         // force ungrab mouse if not focused
@@ -99,9 +107,6 @@ define(function(require) {
     });
     
     //$('.side-menu-wrapper').addClass('collapsed');
-
-    connectLoop = true;
-    connect();
 
     $('#page-console .ctrlaltdel').click(function() {
       rfb.sendCtrlAltDel();
@@ -129,7 +134,8 @@ define(function(require) {
       restrict: 'E',
       scope: {
         focused: '=',
-        state: '='
+        state: '=',
+        control: '='
       },
       controller: controller,
       template: '<div class="canvas-wrapper" ng-mouseenter="grab()" ng-mouseleave="ungrab()"><canvas></canvas></div>',

@@ -6,12 +6,15 @@ define(function(require) {
   require('twitter/bootstrap/rails/confirm');
   //require('./_console');
   require('ui-bootstrap');
+  require('angular-sanitize');
   require('angular-messages');
+  require('ui-select');
 
   var angular = require('angular');
   
+  // ngSanitize is for ng-bind-html
   var app = angular.module('app',
-    ['ui.bootstrap', 'ngMessages', require('./console')]
+    ['ui.bootstrap','ngSanitize','ngMessages', 'ui.select', require('./console')]
   );
 
   app.controller('AppCtrl', function($scope) {
@@ -22,6 +25,54 @@ define(function(require) {
 
   app.controller('ShowMachineCtrl', function($scope, $rootScope, $http) {
     $scope.machine = JSON.parse($('#initialMachineData').html());
+
+    $scope.idToCode = {};
+    JSON.parse($("#isoData").html()).forEach(function(image) {
+      $scope.idToCode[image.attributes.id] = image.attributes.code;
+    });
+    console.log($scope.idToCode);
+    $scope.isoImages = JSON.parse($("#isoImagesData").html()).map(function(image) {
+      return image.attributes;
+    });
+
+    console.log($scope.isoImages);
+
+    $scope.data = {
+      active: {
+        power: true,
+      }
+    };
+
+    var updateSelectedIso = function() {
+      $scope.data.selectedIso = $scope.isoImages.filter(function(image) {
+        return image.id === $scope.machine.iso_image_id
+      })[0]
+    };
+
+    updateSelectedIso();
+
+    $scope.changeIso = function(imageId) {
+      $scope.data.mountingIso = true;
+      $.post('/machines/' + $scope.machine.id + '/mount_iso', {
+        machine: {
+          iso_image_id: imageId
+        }
+      }).then(function(data) {
+        handleProgress(data.progress_id, function() {
+          $scope.data.mountingIso = false;
+        }, function() {
+          $scope.data.mountingIso = false;
+        });
+      }, function(error) {
+        // TODO handle error
+        $scope.data.mountingIso = false;
+      });
+    };
+
+    $scope.console = {}; // will be bound by directive
+    console.log($scope.machine);
+    console.log($scope.data.selectedIso);
+
     var baseUrl = '/machines/' + $scope.machine.id;
 
     $scope.toHumanValue = function(val) {
@@ -71,7 +122,7 @@ define(function(require) {
       var actionUrl = baseUrl + '/' + name;
 
       $scope.requesting[name]= true;
-      $.post(actionUrl).success(function(data) {
+      $.post(actionUrl).then(function(data) {
         handleProgress(data.progress_id, function() {
           $scope.requesting[name]= false;
           $scope.data.error = null;
@@ -82,21 +133,20 @@ define(function(require) {
       });
     };
 
-
-
-    $scope.data = {
-      active: {
-        power: true,
-      }
-    };
-
     $scope.requesting = {};
     $scope.canDo = {};
 
     var timeoutHandler;
     function updateState() {
+      var skipIsoUpdate = !$scope.data.mountingIso;
       $http.get(baseUrl + '.json').then(function(response) {
         $scope.machine = response.data;
+
+        // prevent live updates from changing this until the process ended
+        if(!skipIsoUpdate && !$scope.data.mountingIso) {
+          updateSelectedIso();
+        }
+
         timeoutHandler = setTimeout(updateState, 1000);
       }, function() {
         $scope.machine.stateDisconnected = true;
@@ -111,6 +161,8 @@ define(function(require) {
     
 
     $scope.$watch('data.active.console', function(val) {
+      if($scope.console.connect)
+        $scope.console.connect();
       $scope.$parent.data.menuCollapse = $scope.data.active.console;
     });
   });
