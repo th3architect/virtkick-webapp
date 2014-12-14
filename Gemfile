@@ -1,10 +1,11 @@
 source 'https://rubygems.org'
 
-ruby '2.1.3'
+ruby '2.1.5'
 
+gem 'rake', '10.1.0'
 gem 'active_hash'
 gem 'activemodel'
-gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '3.1.9'
 gem 'bootstrap-sass', '~> 3.1'
 gem 'bugsnag'
 gem 'coffee-rails', '~> 4.1.0'
@@ -15,34 +16,35 @@ gem 'ipaddress', '~> 0.8.0'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
 gem 'httparty'
-gem 'rails', git: 'https://github.com/rails/rails.git'
+gem 'rails', '4.2.0rc2'
 gem 'twitter-bootstrap-rails-confirm', git: 'https://github.com/bluerail/twitter-bootstrap-rails-confirm.git'
 gem 'rails-html-sanitizer', '~> 1.0'
 gem 'rails_bootstrap_navbar'
 gem 'recursive-open-struct'
 gem 'responders', '~> 2.0'
 gem 'sass-rails', '~> 5.0.0.beta1'
+gem 'debug_inspector'
 
 gem 'slim'
-gem 'sqlite3'
-gem 'therubyracer'
+gem 'sqlite3', '1.3.9'
+gem 'nokogiri', '1.6.5'
 gem 'uglifier', '>= 1.3.0'
-gem 'requirejs-rails', git: 'https://github.com/RushPL/requirejs-rails.git', branch: 'sourceMaps'
+gem 'requirejs-rails', git: 'https://github.com/Rush/requirejs-rails.git', branch: 'sourceMaps'
 
 group :development, :test do
   gem 'rspec-rails'
   gem 'spring'
   gem 'web-console', '~> 2.0.0.beta2'
-end
+end unless ENV['PACKAGING']
 
 group :development do
   gem 'rb-fsevent', require: false
-end
+end unless ENV['PACKAGING']
 
 group :test do
   gem 'codeclimate-test-reporter'
   gem 'timecop'
-end
+end unless ENV['PACKAGING']
 
 # Gems that need to be required as last
 gem 'delayed_job', git: 'https://github.com/Nowaker/delayed_job.git', branch: 'feature/exception-in-failure-hook'

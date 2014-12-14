@@ -7,3 +7,4 @@
 /Gemfile.local
 /public/assets
 /node_modules
+vendor/cache
