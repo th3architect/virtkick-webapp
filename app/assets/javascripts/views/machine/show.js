@@ -30,12 +30,10 @@ define(function(require) {
     JSON.parse($("#isoData").html()).forEach(function(image) {
       $scope.idToCode[image.attributes.id] = image.attributes.code;
     });
-    console.log($scope.idToCode);
+
     $scope.isoImages = JSON.parse($("#isoImagesData").html()).map(function(image) {
       return image.attributes;
     });
-
-    console.log($scope.isoImages);
 
     $scope.data = {
       active: {
@@ -70,8 +68,6 @@ define(function(require) {
     };
 
     $scope.console = {}; // will be bound by directive
-    console.log($scope.machine);
-    console.log($scope.data.selectedIso);
 
     var baseUrl = '/machines/' + $scope.machine.id;
 
