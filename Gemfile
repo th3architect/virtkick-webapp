@@ -34,7 +34,7 @@ gem 'requirejs-rails', git: 'https://github.com/Rush/requirejs-rails.git', branc
 group :development, :test do
   gem 'rspec-rails'
   gem 'spring'
-  gem 'web-console', '~> 2.0.0.beta2'
+  gem 'web-console', '2.0.0'
 end unless ENV['PACKAGING']
 
 group :development do
