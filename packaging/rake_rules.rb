@@ -69,7 +69,7 @@ def create_package(target)
   sh "rm -rf #{package_dir}"
   sh "mkdir #{package_dir}"
   sh "mkdir -p #{package_dir}/lib/app"
-  sh "cp -r config.ru Rakefile bin app config db lib log public spec vendor hello.rb #{package_dir}/lib/app/"
+  sh "cp -r config.ru Rakefile bin app config db lib log public spec vendor #{package_dir}/lib/app/"
   sh "mkdir #{package_dir}/lib/ruby"
   sh "tar -xzf packaging/traveling-ruby-#{TRAVELING_RUBY_VERSION}-#{target}.tar.gz -C #{package_dir}/lib/ruby"
   sh "cp packaging/wrapper.sh #{package_dir}/virtkick-webapp"
