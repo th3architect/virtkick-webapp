@@ -8,7 +8,7 @@ before_script:
 script:
 - bundle exec rake spec
 - SECRET_KEY_BASE=x DEVISE_SECRET_KEY=x RAILS_ENV=production bundle exec rake assets:precompile
-- bundle exec rake package
+- RAILS_ENV=production bundle exec rake package
 notifications:
   email: false
   webhooks: http://n.tkte.ch/h/3277/NNXLHHi3FclU9dLZpLNHByMf
