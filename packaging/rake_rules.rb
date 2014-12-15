@@ -74,7 +74,7 @@ def create_package(target)
   sh "mkdir #{package_dir}/lib/ruby"
   sh "tar -xzf packaging/traveling-ruby-#{TRAVELING_RUBY_VERSION}-#{target}.tar.gz -C #{package_dir}/lib/ruby"
   sh "cp packaging/wrapper-common.sh #{package_dir}/lib"
-  sh "cp packaging/{virtkick-webapp,virtkick-work} #{package_dir}"
+  sh "cp packaging/virtkick-webapp packaging/virtkick-work #{package_dir}"
   sh "cp -pR packaging/vendor #{package_dir}/lib/"
   sh "cp packaging/tmp/Gemfile packaging/tmp/Gemfile.lock #{package_dir}/lib/vendor/"
   sh "rm -rf packaging/tmp"
