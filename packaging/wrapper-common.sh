@@ -25,7 +25,4 @@ export PACKAGING=1 # prevent errors from missing development/test dependencies
 if [ "$RAILS_ENV" == "" ];then
     export RAILS_ENV=production
 fi
-if ! [ -e db/$RAILS_ENV.sqlite3 ];then
-    "$SELFDIR/lib/ruby/bin/bundle" exec rake db:migrate
-fi
 
