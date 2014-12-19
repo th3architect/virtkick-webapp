@@ -49,7 +49,6 @@ domain type='kvm'
       target port='0' type='serial'
     input bus='usb' type='tablet'
     input bus='ps2' type='mouse'
-    input bus='ps2' type='keyboard'
     graphics type='vnc' listen=machine.vnc_listen_ip autoport='yes' passwd=machine.vnc_password
     video
       model heads='1' type='cirrus' vram='9216'
