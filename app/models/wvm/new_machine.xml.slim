@@ -43,9 +43,9 @@ domain type='kvm'
         - elsif network.ip4
           parameter name='IP' value=network.ip4
       address bus='0x00' domain='0x0000' function='0x0' slot='0x03' type='pci'
-    serial type='pty'
+    serial type='null'
       target port='0'
-    console type='pty'
+    console type='null'
       target port='0' type='serial'
     input bus='usb' type='tablet'
     input bus='ps2' type='mouse'
