@@ -1,5 +1,4 @@
 PACKAGE_NAME = "virtkick-webapp"
-VERSION = "1.0.0"
 TRAVELING_RUBY_VERSION = "20141213-2.1.5"
 SQLITE3_VERSION = "1.3.9"
 NOKOGIRI_VERSION = "1.6.5"
@@ -65,7 +64,7 @@ file "packaging/traveling-ruby-#{TRAVELING_RUBY_VERSION}-linux-x86_64-bcrypt-#{B
 end
 
 def create_package(target)
-  package_dir = "#{PACKAGE_NAME}-#{VERSION}-#{target}"
+  package_dir = "#{PACKAGE_NAME}-#{target}"
   sh "rm -rf #{package_dir}"
   sh "mkdir #{package_dir}"
   sh "mkdir -p #{package_dir}/lib/app"
