@@ -16,7 +16,7 @@ gem 'ipaddress', '~> 0.8.0'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
 gem 'httparty'
-gem 'rails', '4.2.0rc2'
+gem 'rails', '4.2.0'
 gem 'twitter-bootstrap-rails-confirm', git: 'https://github.com/bluerail/twitter-bootstrap-rails-confirm.git'
 gem 'rails-html-sanitizer', '~> 1.0'
 gem 'rails_bootstrap_navbar'
@@ -48,7 +48,7 @@ end unless ENV['PACKAGING']
 
 # Gems that need to be required as last
 gem 'delayed_job', git: 'https://github.com/Nowaker/delayed_job.git', branch: 'feature/exception-in-failure-hook'
-gem 'delayed_job_active_record', '~> 4.0'
+gem 'delayed_job_active_record', '~> 4.0', git: 'https://github.com/Nowaker/delayed_job_active_record.git'
 
 
 if File.exists?('Gemfile.local')
