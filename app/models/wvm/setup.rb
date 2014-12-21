@@ -90,23 +90,38 @@ class Wvm::Setup < Wvm::Base
   end
 
   def self.find_network id
-    call :get, "/#{id}/network/#{hypervisor[:network][:id]}"
-    # TODO: validate properties and state
+    network = call :get, "/#{id}/network/#{hypervisor[:network][:id]}"
+    if network.state != 1
+      raise Errors, ['Network not active']
+    end
   rescue Errors
     raise Error, 'Network not configured.'
   end
 
   def self.create_network id
     network = hypervisor[:network]
-    call :post, "/#{id}/networks", create: '',
-        name: network[:id],
-        subnet: network[:address],
-        dhcp: network[:dhcp],
-        forward: network[:type],
-        bridge_name: '',
-        dns: network[:dns].join(',')
-  rescue Errors
-    raise Error, ''
+
+    begin
+      network_url = "/#{id}/network/#{hypervisor[:network][:id]}"
+      libvirt_network = call :get, network_url
+    rescue Errors
+      call :post, "/#{id}/networks", create: '',
+          name: network[:id],
+          subnet: network[:address],
+          dhcp: network[:dhcp],
+          forward: network[:type],
+          bridge_name: '',
+          dns: network[:dns].join(',')
+    else
+      if libvirt_network.state != 1
+        call :post, network_url, start: ''
+      end
+      if libvirt_network.autostart != 1
+        call :post, network_url, set_autostart: ''
+      end
+    end
+  rescue Errors => e
+    raise Error, "Error while creating a network: #{e.message}"
   end
 
   # Storage
