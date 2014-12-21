@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20141022184302) do
 
-  create_table "delayed_jobs", force: true do |t|
+  create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
     t.integer  "attempts",   default: 0, null: false
     t.text     "handler",                null: false
@@ -29,20 +29,20 @@ ActiveRecord::Schema.define(version: 20141022184302) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
-  create_table "ip_ranges", force: true do |t|
+  create_table "ip_ranges", force: :cascade do |t|
     t.string  "netmask"
     t.string  "gateway"
     t.integer "hypervisor_id", default: 1
   end
 
-  create_table "ips", force: true do |t|
+  create_table "ips", force: :cascade do |t|
     t.integer "ip_range_id"
     t.string  "ip"
     t.boolean "taken",       default: false
     t.string  "vm_uuid"
   end
 
-  create_table "meta_machines", force: true do |t|
+  create_table "meta_machines", force: :cascade do |t|
     t.string   "hostname"
     t.integer  "user_id"
     t.integer  "libvirt_hypervisor_id"
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20141022184302) do
   add_index "meta_machines", ["hostname"], name: "index_meta_machines_on_hostname", unique: true
   add_index "meta_machines", ["user_id"], name: "index_meta_machines_on_user_id"
 
-  create_table "new_machines", force: true do |t|
+  create_table "new_machines", force: :cascade do |t|
     t.string   "hostname"
     t.integer  "user_id"
     t.integer  "plan_id"
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20141022184302) do
     t.datetime "updated_at"
   end
 
-  create_table "progresses", force: true do |t|
+  create_table "progresses", force: :cascade do |t|
     t.integer  "user_id",                    null: false
     t.boolean  "finished",   default: false, null: false
     t.string   "error"
@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 20141022184302) do
 
   add_index "progresses", ["user_id"], name: "index_progresses_on_user_id"
 
-  create_table "settings", force: true do |t|
+  create_table "settings", force: :cascade do |t|
     t.string   "key",        null: false
     t.string   "val"
     t.datetime "created_at", null: false
@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 20141022184302) do
 
   add_index "settings", ["key"], name: "index_settings_on_key"
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
