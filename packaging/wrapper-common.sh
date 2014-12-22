@@ -13,10 +13,10 @@ cd "$SELFDIR/lib/app"
 
 export PATH="$SELFDIR/lib/ruby/bin:$SELFDIR/lib/vendor/ruby/2.1.0/bin:$PATH"
 if ! [ -e .devise-secret ];then
-    hexdump -n 16 -v -e '/1 "%02X"' /dev/urandom > .devise-secret
+    hexdump -n 64 -v -e '/1 "%02X"' /dev/urandom > .devise-secret
 fi
 if ! [ -e .cookie-secret ];then
-    hexdump -n 16 -v -e '/1 "%02X"' /dev/urandom > .cookie-secret
+    hexdump -n 128 -v -e '/1 "%02X"' /dev/urandom > .cookie-secret
 fi
 
 export DEVISE_SECRET_KEY="$(cat .devise-secret)"
