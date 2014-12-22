@@ -5,11 +5,11 @@ ruby '2.1.5'
 gem 'rake', '10.1.0'
 gem 'active_hash'
 gem 'activemodel'
-gem 'bcrypt', '3.1.9'
 gem 'bootstrap-sass', '~> 3.1'
 gem 'bugsnag'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'daemons'
+gem 'debug_inspector'
 gem 'devise', git: 'https://github.com/plataformatec/devise.git', branch: 'lm-rails-4-2'
 gem 'font-awesome-rails'
 gem 'ipaddress', '~> 0.8.0'
@@ -23,13 +23,15 @@ gem 'rails_bootstrap_navbar'
 gem 'recursive-open-struct'
 gem 'responders', '~> 2.0'
 gem 'sass-rails', '~> 5.0.0.beta1'
-gem 'debug_inspector'
-
 gem 'slim'
-gem 'sqlite3', '1.3.9'
-gem 'nokogiri', '1.6.5'
 gem 'uglifier', '>= 1.3.0'
 gem 'requirejs-rails', git: 'https://github.com/Rush/requirejs-rails.git', branch: 'sourceMaps'
+
+# These require native extensions. Ensure Traveling Ruby provides an appropriate version before bumping.
+gem 'bcrypt', '3.1.9'
+gem 'nokogiri', '1.6.5'
+gem 'sqlite3', '1.3.9'
+
 
 group :development, :test do
   gem 'rspec-rails'
