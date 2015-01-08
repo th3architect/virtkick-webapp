@@ -138,7 +138,7 @@ define(function(require) {
         control: '='
       },
       controller: controller,
-      template: '<div class="canvas-wrapper" ng-mouseenter="grab()" ng-mouseleave="ungrab()"><canvas></canvas></div>',
+      templateUrl: '/templates/machine/console.html',
       link: link
     }
   });

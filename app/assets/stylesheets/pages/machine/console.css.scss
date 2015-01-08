@@ -30,17 +30,83 @@
       }
 
       .canvas-wrapper {
+        position: relative;
         box-sizing: border-box;
         background-color: black;
         border-radius: 4px;
         overflow: hidden;
-        margin-bottom: 0;
         min-width: 640px;
         min-height: 480px;
         
+        .overlay {
+          position: absolute;
+          box-sizing: border-box;
+          border-radius: 4px;
+          display: none;
+          width: 100%;
+          height: 100%;
+          font-size: 0.95em;
+          color: $blue-text;
+          
+          .state {
+            top: 50%;
+            position: relative;
+            width: 100%;
+            padding: 10px;
+            max-width: 500px;
+            margin: 0 auto;
+            margin-top: -60px;
+
+            .symbol {
+              border-radius: 4px;
+              position: relative;
+              height: 74px;
+              width: 74px;
+              padding: 0px;
+              margin: 0 auto;
+              cursor: pointer;
+
+              .icon {
+                text-align: center;
+                position: relative;
+                color: white;
+                line-height: 74px;
+                font-size: 25px;
+
+                &.fa-play {
+                  padding-left: 4px;
+                }
+              }
+            }
+
+            .description {
+              position: relative;
+              margin-top: 30px;
+            }
+          }
+
+          .overlay-bg {
+            box-sizing: border-box;
+            border-radius: 4px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.95;
+            background-color: $dark-blue-bg;
+          }
+        }
+
         canvas {
           margin-bottom: 0;
           @extend .cursor-hidden;
+        }
+      }
+
+      &.paused {
+        .canvas-wrapper .overlay {
+          display: block;
         }
       }
 
