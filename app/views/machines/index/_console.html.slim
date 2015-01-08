@@ -1,6 +1,6 @@
 #page-console.text-center(ng-class="{focused: consoleFocused}")
   .console-window-wrapper
-    .console-window.paused(ng-class="{focused: consoleFocused}")
+    .console-window(ng-class="{focused: consoleFocused, paused: console.paused}")
       .focus-indicator
       console password=@machine.vnc_password uuid=@machine.uuid focused="consoleFocused" state="data" control='console'
       .vm-actions

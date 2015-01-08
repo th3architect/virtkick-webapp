@@ -137,7 +137,8 @@ define(function(require) {
       var skipIsoUpdate = !$scope.data.mountingIso;
       $http.get(baseUrl + '.json').then(function(response) {
         $scope.machine = response.data;
-
+        $scope.console.paused = response.data.status.attributes.id === 'suspended';
+        
         // prevent live updates from changing this until the process ended
         if(!skipIsoUpdate && !$scope.data.mountingIso) {
           updateSelectedIso();
