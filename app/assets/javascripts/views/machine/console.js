@@ -65,6 +65,7 @@ define(function(require) {
       var password = attrs.password;
       var uuid = attrs.uuid;
 
+      console.log(host, port, password, window.location.pathname.substr(1) + "/vnc");
       rfb.connect(host, port, password, window.location.pathname.substr(1) + "/vnc");
     };
 
@@ -121,14 +122,9 @@ define(function(require) {
     });
 
     updateConsole();
-
-
   }
 
-
-
   angular.module(module.uri, []).directive('console', function() {
-
     return {
       replace: true,
       restrict: 'E',
@@ -138,12 +134,10 @@ define(function(require) {
         control: '='
       },
       controller: controller,
-      templateUrl: '/templates/machine/console.html',
+      template: require('jade!templates/machine/console'),
       link: link
     }
   });
   return module.uri;
 
-
-  
 });

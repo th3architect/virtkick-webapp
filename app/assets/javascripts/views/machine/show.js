@@ -42,29 +42,45 @@ define(function(require) {
     };
 
     var updateSelectedIso = function() {
-      $scope.data.selectedIso = $scope.isoImages.filter(function(image) {
+      $scope.machine.selectedIso = $scope.isoImages.filter(function(image) {
         return image.id === $scope.machine.iso_image_id
       })[0]
     };
 
     updateSelectedIso();
 
-    $scope.changeIso = function(imageId) {
-      $scope.data.mountingIso = true;
+    $scope.machine.changeIso = function(imageId) {
+      $scope.machine.mountingIso = true;
       $.post('/machines/' + $scope.machine.id + '/mount_iso', {
         machine: {
           iso_image_id: imageId
         }
       }).then(function(data) {
         handleProgress(data.progress_id, function() {
-          $scope.data.mountingIso = false;
+          $scope.machine.mountingIso = false;
         }, function() {
-          $scope.data.mountingIso = false;
+          $scope.machine.mountingIso = false;
         });
       }, function(error) {
         // TODO handle error
-        $scope.data.mountingIso = false;
+        $scope.machine.mountingIso = false;
       });
+    };
+
+    $scope.machine.resume = function(cb) {
+      $scope.doAction('resume', cb);
+    };
+    $scope.machine.pause = function(cb) {
+      $scope.doAction('pause', cb);
+    };
+    $scope.machine.stop = function(cb) {
+      $scope.doAction('stop', cb);
+    };
+    $scope.machine.forceStop = function(cb) {
+      $scope.doAction('force_stop', cb);
+    };
+    $scope.machine.forceRestart = function(cb) {
+      $scope.doAction('force_restart', cb);
     };
 
     $scope.console = {}; // will be bound by directive
@@ -75,9 +91,6 @@ define(function(require) {
       val += " MB";
       return val;
     }
-
-
-
 
     var handleProgress = function(progressId, onSuccess, onError) {
         var id = setInterval(function() {
@@ -113,7 +126,7 @@ define(function(require) {
 
       });
 
-    $scope.doAction = function(name) {
+    $scope.doAction = function(name, cb) {
 
       var actionUrl = baseUrl + '/' + name;
 
@@ -121,10 +134,12 @@ define(function(require) {
       $.post(actionUrl).then(function(data) {
         handleProgress(data.progress_id, function() {
           $scope.requesting[name]= false;
-          $scope.data.error = null;
+          $scope.machine.error = null;
+          if(cb) cb();
         }, function(error) {
           $scope.requesting[name]= false;
-          $scope.data.error = error;
+          $scope.machine.error = error;
+          if(cb) cb(error);
         });
       });
     };
@@ -134,13 +149,14 @@ define(function(require) {
 
     var timeoutHandler;
     function updateState() {
-      var skipIsoUpdate = !$scope.data.mountingIso;
+      var skipIsoUpdate = !$scope.machine.mountingIso;
       $http.get(baseUrl + '.json').then(function(response) {
-        $scope.machine = response.data;
+
+        $scope.machine = $.extend(true, $scope.machine, response.data);
         $scope.console.paused = response.data.status.attributes.id === 'suspended';
         
         // prevent live updates from changing this until the process ended
-        if(!skipIsoUpdate && !$scope.data.mountingIso) {
+        if(!skipIsoUpdate && !$scope.machine.mountingIso) {
           updateSelectedIso();
         }
 

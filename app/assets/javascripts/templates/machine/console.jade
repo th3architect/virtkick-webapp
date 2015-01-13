@@ -1,0 +1,10 @@
+.canvas-wrapper(ng-mouseenter='grab()', ng-mouseleave='ungrab()')
+  .overlay
+    .overlay-bg
+    .state
+      .btn.btn-primary.symbol(ng-click="state.resume()")
+        .icon.fa.fa-play
+      .description
+        p
+          | Machine paused.
+  canvas
