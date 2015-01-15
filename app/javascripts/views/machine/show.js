@@ -3,7 +3,9 @@ define(function(require) {
   var $ = require('jquery');
   //require('bootstrap');
   require('!domReady');
+
   require('twitter/bootstrap/rails/confirm');
+
   //require('./_console');
   require('ui-bootstrap');
   require('angular-sanitize');

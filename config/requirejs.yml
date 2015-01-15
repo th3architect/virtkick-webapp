@@ -29,4 +29,3 @@ preserveLicenseComments: false
 generateSourceMaps: true
 optimize: uglify2
 wrapShim: true
-onBuildRead: "function (moduleName, path, contents) { return require('ng-annotate')(contents, {add: true}).src;}"

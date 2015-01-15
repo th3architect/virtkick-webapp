@@ -25,7 +25,6 @@ gem 'responders', '~> 2.0'
 gem 'sass-rails', '~> 5.0.0.beta1'
 gem 'slim'
 gem 'uglifier', '>= 1.3.0'
-gem 'requirejs-rails', git: 'https://github.com/Rush/requirejs-rails.git', branch: 'sourceMaps'
 
 # These require native extensions. Ensure Traveling Ruby provides an appropriate version before bumping.
 gem 'bcrypt', '3.1.9'
