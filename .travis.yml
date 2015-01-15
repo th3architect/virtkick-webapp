@@ -2,9 +2,11 @@ language: ruby
 cache: bundler
 rvm:
 - 2.1.5
+before_install: npm install -g grunt-cli
 before_script:
 - bundle exec rake db:migrate
 - npm install
+- grunt build
 script:
 - bundle exec rake spec
 - SECRET_KEY_BASE=x DEVISE_SECRET_KEY=x RAILS_ENV=production bundle exec rake assets:precompile

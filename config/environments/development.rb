@@ -24,4 +24,7 @@ Rails.application.configure do
   # config.assets.css_compressor = NoCompression.new
   config.assets.debug = true
   config.assets.raise_runtime_errors = true
+
+  # only for development since digest is off
+  config.assets.paths << Rails.root.join('app', 'javascripts')
 end

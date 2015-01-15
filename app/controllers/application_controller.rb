@@ -36,4 +36,5 @@ class ApplicationController < ActionController::Base
   def render_progress progress_id
     render json: {progress_id: progress_id}
   end
+  include RequirejsHelper
 end

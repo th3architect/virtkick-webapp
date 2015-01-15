@@ -21,7 +21,7 @@ module VirtkickWebapp
     config.log_formatter = ::Logger::Formatter.new
     config.autoflush_log = true
 
-    config.serve_static_assets = true
+    config.serve_static_files = true
 
     config.assets.digest = true
     config.assets.enabled = true
