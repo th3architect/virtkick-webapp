@@ -1,5 +1,4 @@
 define(function(require) {
-
   var module = require('module');
   var angular = require('angular');
   var $ = require('jquery');
@@ -65,7 +64,6 @@ define(function(require) {
       var password = attrs.password;
       var uuid = attrs.uuid;
 
-      console.log(host, port, password, window.location.pathname.substr(1) + "/vnc");
       rfb.connect(host, port, password, window.location.pathname.substr(1) + "/vnc");
     };
 

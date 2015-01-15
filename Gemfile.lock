@@ -15,14 +15,6 @@ GIT
       delayed_job (>= 3.0, < 4.1)
 
 GIT
-  remote: https://github.com/Rush/requirejs-rails.git
-  revision: 119538b99374771ef688497302ea9a8317be8099
-  branch: sourceMaps
-  specs:
-    requirejs-rails (0.9.5)
-      railties (>= 3.1.1)
-
-GIT
   remote: https://github.com/bluerail/twitter-bootstrap-rails-confirm.git
   revision: 4490c95db8421d590c704ce09907f3b2927e8ded
   specs:
@@ -262,7 +254,6 @@ DEPENDENCIES
   rake (= 10.1.0)
   rb-fsevent
   recursive-open-struct
-  requirejs-rails!
   responders (~> 2.0)
   rspec-rails
   sass-rails (~> 5.0.0.beta1)
