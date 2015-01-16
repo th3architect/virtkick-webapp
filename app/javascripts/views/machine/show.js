@@ -16,7 +16,7 @@ define(function(require) {
   
   // ngSanitize is for ng-bind-html
   var app = angular.module('app',
-    ['ui.bootstrap','ngSanitize','ngMessages', 'ui.select', require('./console')]
+    ['ui.bootstrap','ngSanitize','ngMessages', 'ui.select', require('./console'), require('directives/ajaxloader/ajaxloader')]
   );
 
   app.controller('AppCtrl', function($scope) {

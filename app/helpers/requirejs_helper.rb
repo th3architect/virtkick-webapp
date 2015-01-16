@@ -7,7 +7,11 @@ module RequirejsHelper
     html = ''
     html += '<script src="/require.js"></script>'
 
-    requireConfig = {"baseUrl" => "/javascripts"}
+    if Rails.env.production? 
+        requireConfig = {"baseUrl" => "/javascripts"}
+    else
+        requireConfig = {"baseUrl" => "/assets"}
+    end
     
     requireConfig = requireConfig.merge(
       {"shim" => requireConfigFile["shim"]}
