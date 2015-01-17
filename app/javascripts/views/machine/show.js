@@ -10,13 +10,12 @@ define(function(require) {
   require('ui-bootstrap');
   require('angular-sanitize');
   require('angular-messages');
-  require('ui-select');
 
   var angular = require('angular');
   
   // ngSanitize is for ng-bind-html
   var app = angular.module('app',
-    ['ui.bootstrap','ngSanitize','ngMessages', 'ui.select', require('./console')]
+    ['ui.bootstrap','ngMessages', require('./console'), require('directives/distroselect/distroselect')]
   );
 
   app.controller('AppCtrl', function($scope) {

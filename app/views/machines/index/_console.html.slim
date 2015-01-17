@@ -5,12 +5,7 @@
       console password=@machine.vnc_password uuid=@machine.uuid focused="consoleFocused" state="machine" control='console'
       .vm-actions
         .iso
-          = form_for @machine, as: :machine, url: mount_iso_machine_path(@machine), method: :post, remote: true do |f|
-            = f.collection_select :iso_image_id, @iso_images, :id, :long_name, {prompt: true},
-                  class: 'distributions iso_dropdown', id: 'console_machine_iso_image_id'
-            i.fa.fa-spinner.fa-spin.hidden
-            i.fa.fa-check.hidden
-            i.fa.fa-warning.hidden
+          distroselect(machine='machine')
         .rocket-menu
           = image_tag 'logo/virtkick-logo-pixelart-gray-24.png'
         .restart
