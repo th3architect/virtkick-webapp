@@ -1,6 +1,6 @@
 div
   ui-select(ng-model="machine.selectedIso", theme="bootstrap", style="width: 300px;", on-select="machine.changeIso($item.id)")
-    ui-select-match(p-laceholder="Select iso from the list")
+    ui-select-match(placeholder="None selected")
       img(ng-if="!machine.mountingIso", style="height: 28px; width: 28px; margin-top: -3px; margin-right: 10px;", ng-src="/assets/distros/{{idToCode[$select.selected.iso_distro_id]}}.png")
       div(style="display: inline-block; margin-right: 10px; width: 28px; height: 28px;", ng-if="machine.mountingIso")
         i.fa.fa-spinner.fa-spin.fa-lg
