@@ -15,7 +15,7 @@ define(function(require) {
   
   // ngSanitize is for ng-bind-html
   var app = angular.module('app',
-    ['ui.bootstrap','ngMessages', require('./console'), require('directives/distroselect/distroselect')]
+    ['ui.bootstrap','ngMessages', require('./console'), require('directives/distroselect/distroselect'), require('directives/ajaxloader/ajaxloader')]
   );
 
   app.controller('AppCtrl', function($scope) {
