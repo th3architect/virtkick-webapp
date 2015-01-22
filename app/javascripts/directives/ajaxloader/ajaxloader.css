@@ -1,129 +1,67 @@
 .ajaxloader {
   position: relative;
   display: inline-block;
-  color: white;
-  border-radius: 2.5%;
-  overflow: hidden;
+  margin-right: 10%;
+  border-radius: 50%;
 }
 
-.ajaxloader-inner {
-  position: relative;
-  display: block;
-  width: 70%;
-  height: 70%;
-  padding: 15%;
-}
-
-.ajaxloader-rocket-wrapper {
-  position: relative;
-  display: block;
-  width: 100%;
-  height: 100%;
-  margin-top: 0;
-  overflow: hidden;
-  -moz-transition: margin-top 0.45s ease-out;
-  -webkit-transition: margin-top 0.45s ease-out;
-          transition: margin-top 0.45s ease-out;
-}
-
-.ajaxloader-rocket {
-  overflow: hidden;
+.ajaxloader-circle {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  display: block;
+  -webkit-animation:spin 0.77s ease infinite;
+  -moz-animation:spin 0.77s ease infinite;
+  animation:spin 0.77s ease infinite;
 }
 
-.ajaxloader-rocket-window {
-  overflow: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+.ajaxloader-circle path {
+  fill: #9e8697;
 }
 
-.ajaxloader-rocket-wrapper.flyover {
-  margin-top: -130%;
+.ajaxloader-circle-1 {
+  -webkit-animation-delay: 0.1s;
+  -moz-animation-delay: 0.1s;
+  animation-delay: 0.1s;
 }
 
-.ajaxloader-rocket-wrapper.underneath {
-  margin-top: 130%;
+.ajaxloader-circle-1 path {
+  fill: #6e5667;
 }
 
-.ajaxloader-rocket-wrapper.animate .ajaxloader-rocket-window {
-  -moz-animation: ajaxloaderMovewindow 1.3s infinite;
-  -webkit-animation: ajaxloaderMovewindow 1.3s infinite;
-  animation: ajaxloaderMovewindow 1.3s infinite;
+.ajaxloader-circle-2 {
+  -webkit-animation-delay: 0.15s;
+  -moz-animation-delay: 0.15s;
+  animation-delay: 0.15s;
+  opacity: 0.4;
 }
 
-@-moz-keyframes ajaxloaderMovewindow {
-  0%, 25% {
-    -moz-transform: translateY(0px);
-  }
-  30% {
-    visibility: visible;
-  }
-  50% {
-    visibility: hidden;
-    -moz-transform: translateY(100%);
-  }
-  51% {
-    -moz-transform: translateY(-100%);
-  }
-  70% {
-    visibility: visible;
-  }
-  75%, 100% {
-    -moz-transform: translateY(0px);
-  }
+.ajaxloader-circle-3 {
+  -webkit-animation-delay: 0.2s;
+  -moz-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+  opacity: 0.3;
 }
 
-@-webkit-keyframes ajaxloaderMovewindow {
-  0%, 25% {
-    -webkit-transform: translateY(0px);
-  }
-  49% {
-    visibility: visible;
-  }
-  50% {
-    visibility: hidden;
-    -webkit-transform: translateY(100%);
-  }
-  51% {
-    -webkit-transform: translateY(-100%);
-  }
-  52% {
-    visibility: visible;
-  }
-  75%, 100% {
-    -webkit-transform: translateY(0px);
-  }
+.ajaxloader-circle-4 {
+  -webkit-animation-delay: 0.25s;
+  -moz-animation-delay: 0.25s;
+  animation-delay: 0.25s;
+  opacity: 0.2;
 }
 
-@keyframes ajaxloaderMovewindow {
-  0%, 25% {
-    -webkit-transform: translateY(0px);
-    transform: translateY(0px);
-  }
-  49% {
-    visibility: visible;
-  }
-  50% {
-    visibility: hidden;
-    -webkit-transform: translateY(100%);
-    transform: translateY(100%);
-  }
-  51% {
-    -webkit-transform: translateY(-100%);
-    transform: translateY(-100%);
-  }
-  52% {
-    visibility: visible;
-  }
-  75%, 100% {
-    -webkit-transform: translateY(0px);
-    transform: translateY(0px);
-  }
+@-moz-keyframes spin { 
+  0% { -moz-transform: rotate(0deg); } 
+  95% { -moz-transform: rotate(360deg); }
+  100% { -moz-transform: rotate(360deg); }
+}
+
+@-webkit-keyframes spin { 
+  0% { -webkit-transform: rotate(0deg); } 
+  95% { -webkit-transform: rotate(360deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin { 
+  0% { transform: rotate(0deg); } 
+  95% { transform: rotate(360deg); }
+  100% { transform: rotate(360deg); }
 }
