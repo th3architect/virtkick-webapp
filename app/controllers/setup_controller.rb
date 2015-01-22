@@ -40,5 +40,6 @@ class SetupController < ApplicationController
   def redirect
     @@ready = true
     redirect_to guests_path
+    CountDeploymentJob.track CountDeploymentJob::SETUP_SUCCESS
   end
 end

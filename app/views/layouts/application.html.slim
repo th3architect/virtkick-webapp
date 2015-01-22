@@ -11,10 +11,6 @@ html
     = stylesheet_link_tag 'application', media: 'all'
     = csrf_meta_tags
   body(ng-app=1)
-    .crowdfunding
-      p
-        a href='https://www.indiegogo.com/projects/virtkick-take-cloud-back' WE ARE CROWDFUNDING »
-
     .mobile-newsletter.hidden-md.hidden-lg
       .container
         = render partial: 'layouts/newsletter'
