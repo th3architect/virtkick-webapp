@@ -45,6 +45,7 @@ end unless ENV['PACKAGING']
 group :test do
   gem 'codeclimate-test-reporter'
   gem 'timecop'
+  gem 'webmock'
 end unless ENV['PACKAGING']
 
 # Gems that need to be required as last
