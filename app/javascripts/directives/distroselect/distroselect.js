@@ -1,6 +1,7 @@
 define(function(require) {
   var module = require('module');
   var angular = require('angular');
+  var css = require('css!./distroselect.css');
 
   require('angular-sanitize');
 
@@ -12,7 +13,7 @@ define(function(require) {
   }
 
   function link(scope, element, attrs) {
-
+    scope.width = attrs.width || 'auto';
   }
 
   angular.module(module.uri, ['ngSanitize', 'ui.select'])
