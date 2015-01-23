@@ -1,0 +1,39 @@
+.distroselect .ui-select-bootstrap .chosen-distro {
+  height: 22px; 
+  width: 22px; 
+  margin-top: -3px; 
+  margin-right: 6px;
+}
+
+.distroselect .ui-select-bootstrap .ajaxloader-wrapper {
+  display: inline-block; 
+  margin-right: 6px; 
+  width: 22px; 
+  height: 22px;
+}
+
+.distroselect .ui-select-bootstrap .ajaxloader-wrapper .ajaxloader {
+  margin-right: 0px;
+}
+
+.distroselect .ui-select-bootstrap .ui-select-match {
+  padding: 8px 32px 8px 20px;
+  height: auto;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.distroselect .ui-select-bootstrap .ui-select-match .chosen-distro-name {
+  padding-left: 3px;
+  padding-right: 8px;
+}
+
+.distroselect .ui-select-bootstrap .ui-select-match .caret {
+  right: 20px;
+}
+
+.ui-select-choices .ui-select-choices-row-inner .distro-icon {
+  height: 22px; 
+  width: 22px; 
+  margin-right: 6px;
+}
