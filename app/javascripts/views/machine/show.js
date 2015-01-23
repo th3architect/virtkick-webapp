@@ -17,7 +17,7 @@ define(function(require) {
 
   // ngSanitize is for ng-bind-html
   var app = angular.module('app',
-    ['ui.bootstrap', require('directives/ng-confirm'), 'ngRoute', require('angular-ui-router'), 'ngMessages', require('./console'), require('directives/distroselect/distroselect')]
+    ['ui.bootstrap', require('directives/ng-confirm'), 'ngRoute', require('angular-ui-router'), 'ngMessages', require('./console'), require('directives/distroselect/distroselect'), require('directives/ajaxloader/ajaxloader')]
   );
 
   app.controller('PowerCtrl', function($scope) {

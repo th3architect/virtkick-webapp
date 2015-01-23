@@ -1,0 +1,129 @@
+.ajaxloader {
+  position: relative;
+  display: inline-block;
+  color: white;
+  border-radius: 2.5%;
+  overflow: hidden;
+}
+
+.ajaxloader-inner {
+  position: relative;
+  display: block;
+  width: 70%;
+  height: 70%;
+  padding: 15%;
+}
+
+.ajaxloader-rocket-wrapper {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin-top: 0;
+  overflow: hidden;
+  -moz-transition: margin-top 0.45s ease-out;
+  -webkit-transition: margin-top 0.45s ease-out;
+          transition: margin-top 0.45s ease-out;
+}
+
+.ajaxloader-rocket {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ajaxloader-rocket-window {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ajaxloader-rocket-wrapper.flyover {
+  margin-top: -130%;
+}
+
+.ajaxloader-rocket-wrapper.underneath {
+  margin-top: 130%;
+}
+
+.ajaxloader-rocket-wrapper.animate .ajaxloader-rocket-window {
+  -moz-animation: ajaxloaderMovewindow 1.3s infinite;
+  -webkit-animation: ajaxloaderMovewindow 1.3s infinite;
+  animation: ajaxloaderMovewindow 1.3s infinite;
+}
+
+@-moz-keyframes ajaxloaderMovewindow {
+  0%, 25% {
+    -moz-transform: translateY(0px);
+  }
+  30% {
+    visibility: visible;
+  }
+  50% {
+    visibility: hidden;
+    -moz-transform: translateY(100%);
+  }
+  51% {
+    -moz-transform: translateY(-100%);
+  }
+  70% {
+    visibility: visible;
+  }
+  75%, 100% {
+    -moz-transform: translateY(0px);
+  }
+}
+
+@-webkit-keyframes ajaxloaderMovewindow {
+  0%, 25% {
+    -webkit-transform: translateY(0px);
+  }
+  49% {
+    visibility: visible;
+  }
+  50% {
+    visibility: hidden;
+    -webkit-transform: translateY(100%);
+  }
+  51% {
+    -webkit-transform: translateY(-100%);
+  }
+  52% {
+    visibility: visible;
+  }
+  75%, 100% {
+    -webkit-transform: translateY(0px);
+  }
+}
+
+@keyframes ajaxloaderMovewindow {
+  0%, 25% {
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+  49% {
+    visibility: visible;
+  }
+  50% {
+    visibility: hidden;
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+  }
+  51% {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+  }
+  52% {
+    visibility: visible;
+  }
+  75%, 100% {
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+}
