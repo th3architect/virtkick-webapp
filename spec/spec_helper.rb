@@ -3,6 +3,8 @@ if ENV['CODECLIMATE_REPO_TOKEN']
   CodeClimate::TestReporter.start
 end
 
+require 'webmock/rspec'
+
 
 RSpec.configure do |config|
   config.backtrace_exclusion_patterns = []

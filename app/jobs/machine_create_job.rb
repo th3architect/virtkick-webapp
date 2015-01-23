@@ -18,6 +18,8 @@ class MachineCreateJob < BaseJob
           finished: true,
           current_step: nil
     end
+
+    CountDeploymentJob.track CountDeploymentJob::FIRST_VM_CREATE_SUCCESS
   end
 
   private

@@ -41,5 +41,11 @@ module VirtkickWebapp
       config.x.demo = true
       config.x.demo_timeout = timeout.to_i
     end
+
+    config.after_initialize do
+      if File.basename($0) != 'rake'
+        CountDeploymentJob.track CountDeploymentJob::APP_START_SUCCESS
+      end
+    end
   end
 end
