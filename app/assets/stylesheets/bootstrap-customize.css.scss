@@ -113,6 +113,11 @@ label {
   &.btn-default {
     border: 1px solid $cream-color !important; 
   }
+
+  &.btn-default-focus {
+    color: $bright-violet-color;
+    background-color: $cream-color;
+  }
 }
 
 .navbar-default {

@@ -123,21 +123,12 @@
 
         .iso {
           float: left;
-          width: auto;
 
-          .distributions {
-            background-color: transparent;
-            color: $bright-violet-color;
-            padding: 8px 30px;
-            margin-right: 10px;
-            border:  1px solid $muted-violet-color !important;
-            border-radius: 4px;
-            cursor: pointer;
-            @include transition(background-color, 0.2s, ease-in, 0s);
+          .distroselect {
+            display: inline-block;
 
-            &:focus, &:hover {
-              background-color: darken($cream-color, 10%);
-              @include transition(background-color, 0.2s, ease-in, 0s);
+            .btn {
+              border:  1px solid $muted-violet-color !important;
             }
           }
         }
